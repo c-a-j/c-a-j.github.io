@@ -1,0 +1,52 @@
+{{ $jquery_slim_js := resources.Get "js/libs/jquery/3.3.1/jquery.slim.min.js" | minify | fingerprint }}
+<script src="{{ $jquery_slim_js.RelPermalink }}"></script>
+<!-- Enable HTTP/2 Push -->
+<link rel="preload" href="{{ $jquery_slim_js.RelPermalink }}" as="script">
+
+<script>(function() {
+     var $window = $(window);
+     if ($window.width() >= 1400) { // Match this number with the min-width CSS rule for .hugotoc
+         var $toc = $('#TableOfContents');
+         if ($toc.length > 0) {
+             function onScroll(){
+                 var currentScroll = $window.scrollTop();
+                 var h = $('.content h1, .content h2, .content h3, .content h4, .content h5, .content h6, .h-feed h2');
+                 var id = "";
+                 h.each(function (i, e) {
+                     e = $(e);
+                     if (e.offset().top - 10 <= currentScroll) {
+                         id = e.attr('id');
+                     }
+                 });
+                 var current = $toc.find('a.current');
+                 if (current.length == 1 && current.eq(0).attr('href') == '#' + id) return true;
+
+                 current.each(function (i, e) {
+                     $(e).removeClass('current').siblings('ul').hide();
+                 });
+                 $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
+                     $(e).children('a').addClass('current').siblings('ul').show();
+                 });
+             }
+             $window.on('scroll', onScroll);
+             $(document).ready(function() {
+                 $toc.find('a').parent('li').find('ul').hide();
+                 onScroll();
+                 document.getElementsByClassName('hugotoc')[0].style.display = '';
+             });}}})();</script>
+
+<!-- Minified Version:
+
+     https://report-uri.com/home/hash/
+     'sha256-5RIVE/K+cldgq55HvcaDpOC4VVsKvUd7Hf3nhwuOd94='
+
+     (function(){var e,t=$(window);if(t.width()>=1400&&(e=$("#TableOfContents"),e.length>0)){function n(){var n,o=t.scrollTop(),i=$(".content h1, .content h2, .content h3, .content h4, .content h5, .content h6, .h-feed h2"),s="";if(i.each(function(e,t){t=$(t),t.offset().top-10<=o&&(s=t.attr("id"))}),n=e.find("a.current"),n.length==1&&n.eq(0).attr("href")=="#"+s)return!0;n.each(function(e,t){$(t).removeClass("current").siblings("ul").hide()}),e.find('a[href="#'+s+'"]').parentsUntil("#TableOfContents").each(function(e,t){$(t).children("a").addClass("current").siblings("ul").show()})}t.on("scroll",n),$(document).ready(function(){e.find("a").parent("li").find("ul").hide(),n(),document.getElementsByClassName("hugotoc")[0].style.display=""})}})()
+-->
+
+<!--
+
+     Above script is a slightly refactored version of the script from https://github.com/carsonip/hugo-theme-minos by Carson Ip.
+     Permalink:
+     https://github.com/carsonip/hugo-theme-minos/blob/7459a3f0e1a282b68dce4d715f9a480130d6c366/layouts/partials/article.html#L44-L82
+
+-->

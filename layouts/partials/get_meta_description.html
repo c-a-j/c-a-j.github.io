@@ -1,0 +1,16 @@
+{{ $output := "" }}
+{{ with .Description }}
+    {{ $output = . | $.Page.RenderString | plainify }}
+{{ else }}
+    {{ if .IsPage }}
+        {{ $output = (partial "summary_minus_toc.html" .) | $.Page.RenderString | plainify }}
+    {{ else }}
+        {{ with site.Params.description }}
+            {{ $output = . | $.Page.RenderString | plainify }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+{{ if (not $output) }}
+    {{ $output = site.Param "description" }}
+{{ end }}
+{{ return $output }}

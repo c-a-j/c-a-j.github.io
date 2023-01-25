@@ -1,0 +1,66 @@
+{{ $badge_width := 80 }}
+{{ $badge_height := 15 }}
+{{ $permalink := .Permalink }}
+<div class="badges no-text-decoration">
+    <!-- Indieweb badges -->
+    {{ with site.Params.indieweb }}
+        {{ if (in (site.Param "indieweb.badges") "indieweb") }}
+            <a href="https://indieweb.org/">
+                {{ $img := resources.Get "images/indieweb-badge--optimized.png" | fingerprint }}
+                <img src="{{ $img.RelPermalink }}"
+                     width="{{ $badge_width }}" height={{ $badge_height }}
+                     alt="IndieWebCamp" class="pixelated">
+            </a>
+        {{ end }}
+
+        {{ $mf2_parser_link := printf "https://pin13.net/mf2/?url=%s" $permalink }}
+        <span class="nobr">
+            <a href="{{ $mf2_parser_link }}">
+                <!-- Source: https://aaronparecki.com/2017/12/30/7/indieweb-badge Thanks to Aaron Parecki. -->
+                <!-- Aaron: "Remember to add class="pixelated to the img tag
+                     so that when the badge is viewed on high-resolution displays, it will
+                     retain the pixelated look instead of make it blurry when it scales up!"
+
+                     Though, that is needed only for PNG images, not SVG.
+                -->
+                {{ if (in (site.Param "indieweb.badges") "mf2") }}
+                    {{ $img := resources.Get "images/microformats-badge--optimized.png" | fingerprint }}
+                    <img src="{{ $img.RelPermalink }}"
+                         width="{{ $badge_width }}" height={{ $badge_height }}
+                         alt="Microformats2" class="pixelated">
+                {{ end }}
+                microformats2
+            </a>
+            <!--  data-proofer-ignore makes htmltest ignore this link. -->
+            {{/*- printf `<a href="http://microformats.org/about" data-proofer-ignore>?</a>` | safeHTML */}}
+        </span>
+
+        {{ if (in (site.Param "indieweb.badges") "webring") }}
+            {{ with .webring }}
+                {{ printf `<a href="https://xn--sr8hvo.ws/%s/previous">←</a>` . | safeHTML }}
+                <a href="https://xn--sr8hvo.ws/" title="An IndieWeb Webring">🕸💍</a>
+                {{ printf `<a href="https://xn--sr8hvo.ws/%s/next">→</a>` . | safeHTML }}
+            {{ end }}
+        {{ end }}
+
+        {{ if (in (site.Param "indieweb.badges") "webmention") }}
+            {{ with .webmention }}
+                <a href="https://indieweb.org/Webmention">
+                    {{ $img := resources.Get "images/webmention-badge--optimized.png" | fingerprint }}
+                    <img src="{{ $img.RelPermalink }}"
+                         width={{ $badge_width }} height={{ $badge_height }}
+                         alt="Webmention" class="pixelated">
+                </a>
+            {{ end }}
+        {{ end }}
+    {{ end }}
+
+    {{ with site.Params.html5_validator }}
+        <!-- HTML5 badge -->
+        {{ $html5_validator_link := printf "https://html5.validator.nu/?doc=%s&showsource=yes" $permalink }}
+        |
+        <a href="{{ $html5_validator_link }}">
+            html5 validator
+        </a>
+    {{ end }}
+</div>

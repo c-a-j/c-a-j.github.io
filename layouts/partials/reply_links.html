@@ -1,0 +1,65 @@
+{{ $page := . }}
+
+<!-- Twitter syndication example:
+
+     1. Requirement in site config
+
+     [[Params.social.service]]
+     name = "Twitter"
+     link = "https://twitter.com/kaushalmodi/"
+
+     2. Requirement in page front-matter
+
+     [syndication]
+     twitter = 975860854573936640
+-->
+
+{{ $comment_links := (slice) }}
+{{ with .Params.syndication }}
+    {{ range $key, $val := . }}
+        {{/* If $val is not a string, convert it to a string. */}}
+        {{ if (not (eq "string" (printf "%T" $val))) }}
+            {{ $val = (printf "%d" $val) }}
+        {{ end }}
+        {{ $valid_val := false }}
+        {{ if (not (in (slice "" "0") $val)) }}
+            {{ $valid_val = true }}
+        {{ end }}
+        {{ range site.Param "social.service" }}
+            {{ $syndication_name := (.name | lower) }}
+            {{ if (and $valid_val (eq $key $syndication_name)) }}
+                {{ $url := "" }}
+                {{ if (eq $key "twitter") }}
+                    {{ $url = (printf "%sstatus/%s" .link $val) }}
+                {{ else if (eq $key "mastodon") }}
+                    {{ $url = (printf "%s/%s" .link $val) }}
+                {{ end }}
+                {{ $comment_links = $comment_links | append
+                (printf `<a rel="syndication" class="u-syndication %s"
+                    href="%s"
+                    title="This post was syndicated to %s">%s</a>`
+                    $syndication_name $url .name .name)
+                }}
+            {{ end }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+{{ with site.Param "indieweb.webmention" }}
+    {{ $comment_links = $comment_links | append
+    (printf `<form method="get" action="https://quill.p3k.io/" target="_blank"
+        title="Upon clicking this, when asked about your website on an IndieAuth login screen, type 'https://commentpara.de'. The comments will show up on this page in a few minutes after posting.">
+        <input type="hidden" name="dontask" value="1" />
+        <input type="hidden" name="me" value="https://commentpara.de/" />
+        <input type="hidden" name="reply" value="%s" />
+        <input type="submit" value="commentpara.de" />
+        </form>`
+        $page.Permalink)
+    }}
+{{ end }}
+
+{{ if $comment_links }}
+    <div class="reply-links center">
+        You can reply to this post via {{ (delimit $comment_links ", " " or ") | safeHTML }}.
+    </div>
+{{ end }}

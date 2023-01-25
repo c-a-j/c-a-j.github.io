@@ -1,0 +1,15 @@
+{{ $page := .page }}
+{{ $tag := .tag }}
+{{ $index := -1 }}
+{{ if (in $page.Params.tags $tag) }}
+    {{ with site.Taxonomies.tags }}
+        {{ $weighted_pages := index . ($tag | lower) }}
+        {{ range $idx, $p := $weighted_pages.Pages.ByDate }}
+            {{ if (eq $page.Permalink $p.Permalink) }}
+                {{ $index = $idx }}
+            {{ end }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+{{ $index = (add $index 1) }}
+{{ return $index }}

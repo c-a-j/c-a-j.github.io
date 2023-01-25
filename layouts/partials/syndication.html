@@ -1,0 +1,63 @@
+<!-- Twitter syndication example:
+
+     1. Requirement in site config
+
+     [[Params.social.service]]
+     name = "Twitter"
+     link = "https://twitter.com/kaushalmodi/"
+
+     2. Requirement in page front-matter
+
+     [syndication]
+     twitter = 975860854573936640
+-->
+{{ $syndication_class := "" }}
+{{ $syndication_link := "" }}
+{{ with .Params.syndication }}
+    {{ range $key, $val := . }}
+        {{ $val_is_string := (eq "string" (printf "%T" $val)) }}
+        {{ range $.Param "social.service" }}
+            {{ if (eq $key (.name | lower)) }}
+                {{ $valid_val := false }}
+                {{ if (eq $key "twitter") }}
+                    {{ if (and $val_is_string (not (eq $val "")) (not (eq $val "0"))) }}
+                        {{ $syndication_link = (printf "%sstatus/%s" .link $val) }}
+                        {{ $syndication_class = (.name | lower) }}
+                        {{ $valid_val = true }}
+                    {{ else if (gt $val 0) }}
+                        {{ $syndication_link = (printf "%sstatus/%d" .link $val) }}
+                        {{ $syndication_class = (.name | lower) }}
+                        {{ $valid_val = true }}
+                    {{ end }}
+                {{ else if (eq $key "mastodon") }}
+                    {{ if (and $val_is_string (not (eq $val "")) (not (eq $val "0"))) }}
+                        {{ $syndication_link = (printf "%s/%s" .link $val) }}
+                        {{ $syndication_class = (.name | lower) }}
+                        {{ $valid_val = true }}
+                    {{ else if (gt $val 0) }}
+                        {{ $syndication_link = (printf "%s/%d" .link $val) }}
+                        {{ $syndication_class = (.name | lower) }}
+                        {{ $valid_val = true }}
+                    {{ end }}
+                {{ end }}
+                {{ if (and $valid_val (not (eq "" $syndication_class))) }}
+                    <a rel="syndication"
+                       class="u-syndication {{ $syndication_class }} no-text-decoration"
+                       href="{{ $syndication_link }}"
+                       title="This post was syndicated to {{ .name }}">
+                        {{ with .svg }}
+                            {{ with (index site.Data.svg . ) }}
+                                {{ . | safeHTML }}
+                            {{ end }}
+                        {{ else }}
+                            {{ $family := .family | default "fab" }}
+                            {{ $size := .size | default "lg" }}
+                            {{ $icon := .icon | default (.name | lower) }}
+                            <i class="{{ $family }} fa-{{ $size }} fa-{{ $icon }}"></i>
+                        {{ end }}
+                    </a>&nbsp;
+                {{ end }}
+            {{ end }}
+        {{ end }}
+    {{ end }}
+{{ end }}

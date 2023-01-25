@@ -1,0 +1,46 @@
+<!-- Send webmention -->
+<!-- https://github.com/dg01d/reproach/blob/master/layouts/partials/mention.html -->
+{{ $page := . }}
+{{ with site.Params.indieweb }}
+    {{ $domain := .domain }}
+    {{ with .webmention }}
+        <!-- Comment using https://quill.p3k.io/ and https://commentpara.de/. -->
+        <div class="comment">
+            <div class="instructions left">
+                <p>
+                    You can send a comment <span title="It's OK if you don't know what that means.">
+                    via webmention</span>.
+
+                    Usual Markdown <span title="Syntax: **bold**, _italics_, ~~strikethrough~~, `code`, [desc](some-link), fenced code blocks (```LANG .. ```) and even smileys like :smiley:">syntax</span>
+                    is supported in comments.
+
+                    <em>When asked about your website on an IndieAuth login screen, type
+                    <code>https://commentpara.de</code>.</em>
+
+                    The comments show up on this page in a few minutes
+                    after posting.
+                </p>
+            </div>
+            <form method="get" action="https://quill.p3k.io/" target="_blank">
+                <input type="hidden" name="dontask" value="1" />
+                <input type="hidden" name="me" value="https://commentpara.de/" />
+                <input type="hidden" name="reply" value="{{ $page.Permalink }}" />
+                <input type="submit" value="Write a comment" />
+            </form>
+            <div class="clear-float"></div>
+        </div>
+
+        <div class="send-mention">
+            <p>
+                Or, if you have written a <a href="https://indieweb.org/responses">response</a>
+                to this, enter your response post's URL below.
+            </p>
+	        {{ printf `<form action="%s%s/webmention" method="post">` .endpoint .account | safeHTML }}
+	        {{ printf `<input name="source" placeholder="https://example.com/reply-to-%s/" type="url">` ($page.Title | urlize) | safeHTML }}
+	        {{ printf `<input name="target" value="%s" type="hidden">` ($page.Permalink | replaceRE "^http://localhost:[0-9]+/" $domain) | safeHTML }}
+	        <input value="Send Webmention" type="submit">
+	        {{ printf "</form>" | safeHTML }}
+        </div>
+
+    {{ end }}
+{{ end }}

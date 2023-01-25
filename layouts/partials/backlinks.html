@@ -1,0 +1,37 @@
+{{/*
+   Usages:
+     {{ partial "backlinks.html" (dict "page" .) }}
+     {{ partial "backlinks.html" (dict "page" . "heading" "<h4>Links to this post</h4>") }}
+
+   https://seds.nl/notes/export_org_roam_backlinks_with_gohugo/
+   https://github.com/benmezger/blog/blob/main/layouts/partials/docs/backlinks.html
+*/}}
+{{- $backlinks := slice -}}
+{{/* Do not match presence of file base name in content in a "non-link" usecase.
+     For example, if the base name is "hello", it will match the below cases:
+        - See [this]({{< relref "hello" >}}) for more info.
+        - See [this]({{< relref "/posts/hello" >}}) for more info.
+        - See [this](/hello/)
+        - See [this](/hello)
+     But this will not match this:
+        - .. and he said hello.
+*/}}
+{{- $path_base_re := printf `["/(]%s["/)]` .page.File.ContentBaseName }}
+{{ range where site.RegularPages "RelPermalink" "ne" .page.RelPermalink }}
+    {{ if (findRE $path_base_re .RawContent 1) }}
+        {{ $backlinks = $backlinks | append . }}
+    {{ end }}
+{{ end }}
+{{ with $backlinks }}
+    <section class="backlinks">
+        {{ $default_heading := `<h2 id="backlinks">Backlinks <a class="headline-hash no-text-decoration" href="#backlinks">#</a></h2>` }}
+        {{ printf "%s" ($.heading | default $default_heading) | safeHTML }}
+        <nav>
+            <ul>
+                {{ range . }}
+                    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+                {{ end }}
+            </ul>
+        </nav>
+    </section>
+{{ end }}
