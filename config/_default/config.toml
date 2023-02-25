@@ -19,7 +19,7 @@ publishDir = "docs"
 [Params]
   # https://github.com/tummychow/lanyon-hugo/issues/2#issuecomment-253274278
   # Go date formats: https://golang.org/pkg/time/#pkg-constants
-    mainSections = [ "posts", "notes", "my-notes", "examples" ]
+    mainSections = [ "home", "posts", "notes", "my-notes", "examples" ]
     tagLine = "a work in progres"
     dateform = "Mon Jan 2, 2006"
 
