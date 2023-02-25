@@ -23,7 +23,7 @@ publishDir = "docs"
     tagLine = "theres' a doo doo in my butt"
     dateform = "Mon Jan 2, 2006"
 
-  themecolorbase = "red" # Valid values: "red", "orange", "yellow", "green", "cyan", "blue", "magenta", "brown"
+  themecolorbase = "dark" # Valid values: "red", "orange", "yellow", "green", "cyan", "blue", "magenta", "brown"
 
   # Set favicons to true only if the following files are present in the project assets/ dir:
   # - safari-pinned-tab.svg

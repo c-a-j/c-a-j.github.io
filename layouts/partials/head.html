@@ -73,9 +73,14 @@
          --theme-color-light: {{ index . "light_color" | safeCSS }};
          --theme-heading-color: {{ index . "heading_color" | safeCSS }};
          --theme-body-color: {{ index . "body_color" | safeCSS }};
+         --theme-body-bg-color: {{ index . "body_bg_color" | safeCSS }};
          --theme-hl1-color: {{ index . "highlight_1_color" | safeCSS }};
+         --theme-hl1-font-color: {{ index . "highlight_1_font_color" | safeCSS }};
          --theme-hl2-color: {{ index . "highlight_2_color" | safeCSS }};
+         --theme-hl2-font-color: {{ index . "highlight_2_font_color" | safeCSS }};
          --theme-hl2-transp-color: {{ index . "highlight_2_transparent_color" | safeCSS }};
+         --theme-block-quote-font-color: {{ index . "block_quote_font_color" | safeCSS }};
+         --theme-cursor-blink-color: {{ index . "cursor_blink_color" | safeCSS }};
      }
      {{ end }}
      html {

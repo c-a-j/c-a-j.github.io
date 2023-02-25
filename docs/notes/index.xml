@@ -1,0 +1,57 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>
+            
+                    Notes on
+                
+            
+            Clint A Jordan</title>
+        <link>/notes/</link>
+        <description>Recent content  in Notes
+            on Clint A Jordan</description>
+        
+        <lastBuildDate>Tue, 24 Jan 2023 22:03:31 -0700</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+            <atom:link href="/notes/index.xml" rel="self" type="application/rss&#43;xml" />
+        
+            
+            <item>
+                <title>this is starting to not suck</title>
+                <link>/notes/foo-barski/</link>
+                
+                
+                <description>&lt;blockquote&gt;Collection of &lt;code&gt;awk&lt;/code&gt; examples.&lt;/blockquote&gt;</description>
+                
+                        <author>Clint.Jordan@fakeEmailToMakeValidatorHappy.com (Clint Jordan)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="/categories/unix">unix</category>
+                                
+                            
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="/tags/ramblings">ramblings</category>
+                                
+                            
+                        
+                    
+                
+                <guid>/notes/foo-barski/</guid>
+                <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
+            </item>
+        
+    </channel>
+</rss>
+
+

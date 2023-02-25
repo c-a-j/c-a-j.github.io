@@ -325,7 +325,6 @@ html,
 body {
     margin: 0;
     padding: 0;
-    background-color: var(--theme-body-bg-color);
 }
 
 body {
@@ -622,7 +621,6 @@ h1 {
     /* font-size: 190%; */
     font-size: 2em;
     line-height: 1.1;
-    color: var(--theme-heading-color);
     /* Tue Oct 25 11:31:41 EDT 2016 - kmodi*/
     /* I am not sure what the below mask code does */
     /* -webkit-mask-image: url("/images/mask-eea06722.png"); */
@@ -785,7 +783,7 @@ blockquote {
     border-left: 4px solid var(--theme-color); /* Vertical line on the left */
 }
 blockquote {
-    color: var(--theme-block-quote-font-color);
+    color: var(--theme-hl1-color);
     border-left: 2px solid var(--theme-hl1-color); /* Vertical line on the left */
 }
 
@@ -957,11 +955,10 @@ header .taxo {
 
 .taxo .categories li {
     background: var(--theme-hl1-color);
-    color: var(--theme-hl1-font-color);
+    color: white;
 }
 .taxo .tags li {
     background: var(--theme-hl2-color);
-    color: var(--theme-hl2-font-color);
 }
 /* Show shadow when hovered on */
 .taxo li:focus,
@@ -1180,7 +1177,7 @@ ol>li::before {
 /* ** Blinking cursor */
 /* https://codepen.io/ArtemGordinsky/pen/GnLBq */
 .masthead-title .blinking-cursor {
-    color: var(--theme-cursor-blink-color);
+    color: var(--theme-heading-color);
     -webkit-animation: 5s blink step-end infinite;
     -moz-animation:    5s blink step-end infinite;
     -ms-animation:     5s blink step-end infinite;
@@ -1189,11 +1186,11 @@ ol>li::before {
 }
 
 /* 80% duty cycle blink, where the text will stay transparent only for 1/5th of the time */
-@keyframes         blink {from, to {color: transparent;} 20% {color: var(--theme-cursor-blink-color);}}
-@-moz-keyframes    blink {from, to {color: transparent;} 20% {color: var(--theme-cursor-blink-color);}}
-@-webkit-keyframes blink {from, to {color: transparent;} 20% {color: var(--theme-cursor-blink-color);}}
-@-ms-keyframes     blink {from, to {color: transparent;} 20% {color: var(--theme-cursor-blink-color);}}
-@-o-keyframes      blink {from, to {color: transparent;} 20% {color: var(--theme-cursor-blink-color);}}
+@keyframes         blink {from, to {color: transparent;} 20% {color: var(--theme-heading-color);}}
+@-moz-keyframes    blink {from, to {color: transparent;} 20% {color: var(--theme-heading-color);}}
+@-webkit-keyframes blink {from, to {color: transparent;} 20% {color: var(--theme-heading-color);}}
+@-ms-keyframes     blink {from, to {color: transparent;} 20% {color: var(--theme-heading-color);}}
+@-o-keyframes      blink {from, to {color: transparent;} 20% {color: var(--theme-heading-color);}}
 
 /* * Post */
 .post {
@@ -2137,8 +2134,7 @@ div.reply-links {
     padding: 8px 10px;
     font-size: 2rem;
     font-family: var(--secondary-font);
-    color: var(--body-theme-color);
-    background-color: var(--body-bg-color);
+    color: var(--theme-color);
     caret-color: var(--theme-color);
     text-align: center;
     margin-bottom: 1em;
@@ -2148,7 +2144,7 @@ div.reply-links {
 /* Draft */
 .draft {
     color: white;
-    background-color: var(--theme-color);
+    background-color: red;
     font-family: var(--secondary-font);
     font-weight: bold;
     font-size: 2em;
@@ -2189,7 +2185,7 @@ div.reply-links {
 }
 .feed li {
     background: var(--theme-hl2-color);
-    color: var(--theme-hl2-font-color);
+    color: white;
 
     border: none;
 
@@ -2199,7 +2195,7 @@ div.reply-links {
     margin-right: 0;
 }
 .feed li:hover {
-    background: var(--theme-hl2-color);        /* Standard RSS color */
+    background: #f26522;        /* Standard RSS color */
 }
 
 /* * Jump to top/bottom buttons */

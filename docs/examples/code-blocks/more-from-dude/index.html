@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+    
+    
+    
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+
+    
+    <meta name="referrer" content="no-referrer">
+
+    
+    
+        <meta name="description" content="How to view GitHub Pull Request branches locally in the cloned repo,
+and more importantly, how to do that automatically from within Emacs."/>
+    
+
+    
+    
+        <meta name="keywords" content="git, magit, 100DaysToOffload, github, git-reference, emacs, elisp"/>
+    
+
+    <title>
+        
+            View GitHub Pull Requests in Magit ❚ Clint A Jordan
+        
+    </title>
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+    
+    <style>
+     
+     
+     :root {
+         --theme-color: #ac4142;
+         --theme-color-light: rgba(172, 65, 66, 0.1);
+         --theme-heading-color: #000;
+         --theme-body-color: #36454F;
+         --theme-hl1-color: #6d625f;
+         --theme-hl2-color: #bdb5b3;
+         --theme-hl2-transp-color: rgba(189, 181, 179, 0.5);
+     }
+     
+     html {
+         line-height: 1.5;
+     }
+    </style>
+
+    
+    
+
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/refined.min.2b8a165c1548d4a3fac47edd6e34071f93872f1131116f68d96d3b02ae7e15da.css">
+    
+    <link rel="preload" href="/css/refined.min.2b8a165c1548d4a3fac47edd6e34071f93872f1131116f68d96d3b02ae7e15da.css" as="style">
+
+    
+
+
+
+    
+        <style>
+         
+         /* Background */ .bg { background-color: #ffffff; }
+/* PreWrapper */ .chroma , .code-inline { background-color: #ffffff; }
+/* Other */ .chroma .x , .code-inline .x {  }
+/* Error */ .chroma .err , .code-inline .err { color: #a61717; background-color: #e3d2d2 }
+/* CodeLine */ .chroma .cl , .code-inline .cl {  }
+/* LineTableTD */ .chroma .lntd , .code-inline .lntd { vertical-align: top; padding: 0; margin: 0; border: 0; }
+/* LineTable */ .chroma .lntable , .code-inline .lntable { border-spacing: 0; padding: 0; margin: 0; border: 0; }
+/* LineHighlight */ .chroma .hl , .code-inline .hl { background-color: #ffffcc }
+/* LineNumbersTable */ .chroma .lnt , .code-inline .lnt { white-space: pre; user-select: none; margin-right: 0.4em; padding: 0 0.4em 0 0.4em;color: #7f7f7f }
+/* LineNumbers */ .chroma .ln , .code-inline .ln { white-space: pre; user-select: none; margin-right: 0.4em; padding: 0 0.4em 0 0.4em;color: #7f7f7f }
+/* Line */ .chroma .line , .code-inline .line { display: flex; }
+/* Keyword */ .chroma .k , .code-inline .k { color: #000000; font-weight: bold }
+/* KeywordConstant */ .chroma .kc , .code-inline .kc { color: #000000; font-weight: bold }
+/* KeywordDeclaration */ .chroma .kd , .code-inline .kd { color: #000000; font-weight: bold }
+/* KeywordNamespace */ .chroma .kn , .code-inline .kn { color: #000000; font-weight: bold }
+/* KeywordPseudo */ .chroma .kp , .code-inline .kp { color: #000000; font-weight: bold }
+/* KeywordReserved */ .chroma .kr , .code-inline .kr { color: #000000; font-weight: bold }
+/* KeywordType */ .chroma .kt , .code-inline .kt { color: #445588; font-weight: bold }
+/* Name */ .chroma .n , .code-inline .n {  }
+/* NameAttribute */ .chroma .na , .code-inline .na { color: #008080 }
+/* NameBuiltin */ .chroma .nb , .code-inline .nb { color: #0086b3 }
+/* NameBuiltinPseudo */ .chroma .bp , .code-inline .bp { color: #999999 }
+/* NameClass */ .chroma .nc , .code-inline .nc { color: #445588; font-weight: bold }
+/* NameConstant */ .chroma .no , .code-inline .no { color: #008080 }
+/* NameDecorator */ .chroma .nd , .code-inline .nd { color: #3c5d5d; font-weight: bold }
+/* NameEntity */ .chroma .ni , .code-inline .ni { color: #800080 }
+/* NameException */ .chroma .ne , .code-inline .ne { color: #990000; font-weight: bold }
+/* NameFunction */ .chroma .nf , .code-inline .nf { color: #990000; font-weight: bold }
+/* NameFunctionMagic */ .chroma .fm , .code-inline .fm {  }
+/* NameLabel */ .chroma .nl , .code-inline .nl { color: #990000; font-weight: bold }
+/* NameNamespace */ .chroma .nn , .code-inline .nn { color: #555555 }
+/* NameOther */ .chroma .nx , .code-inline .nx {  }
+/* NameProperty */ .chroma .py , .code-inline .py {  }
+/* NameTag */ .chroma .nt , .code-inline .nt { color: #000080 }
+/* NameVariable */ .chroma .nv , .code-inline .nv { color: #008080 }
+/* NameVariableClass */ .chroma .vc , .code-inline .vc { color: #008080 }
+/* NameVariableGlobal */ .chroma .vg , .code-inline .vg { color: #008080 }
+/* NameVariableInstance */ .chroma .vi , .code-inline .vi { color: #008080 }
+/* NameVariableMagic */ .chroma .vm , .code-inline .vm {  }
+/* Literal */ .chroma .l , .code-inline .l {  }
+/* LiteralDate */ .chroma .ld , .code-inline .ld {  }
+/* LiteralString */ .chroma .s , .code-inline .s { color: #dd1144 }
+/* LiteralStringAffix */ .chroma .sa , .code-inline .sa { color: #dd1144 }
+/* LiteralStringBacktick */ .chroma .sb , .code-inline .sb { color: #dd1144 }
+/* LiteralStringChar */ .chroma .sc , .code-inline .sc { color: #dd1144 }
+/* LiteralStringDelimiter */ .chroma .dl , .code-inline .dl { color: #dd1144 }
+/* LiteralStringDoc */ .chroma .sd , .code-inline .sd { color: #dd1144 }
+/* LiteralStringDouble */ .chroma .s2 , .code-inline .s2 { color: #dd1144 }
+/* LiteralStringEscape */ .chroma .se , .code-inline .se { color: #dd1144 }
+/* LiteralStringHeredoc */ .chroma .sh , .code-inline .sh { color: #dd1144 }
+/* LiteralStringInterpol */ .chroma .si , .code-inline .si { color: #dd1144 }
+/* LiteralStringOther */ .chroma .sx , .code-inline .sx { color: #dd1144 }
+/* LiteralStringRegex */ .chroma .sr , .code-inline .sr { color: #009926 }
+/* LiteralStringSingle */ .chroma .s1 , .code-inline .s1 { color: #dd1144 }
+/* LiteralStringSymbol */ .chroma .ss , .code-inline .ss { color: #990073 }
+/* LiteralNumber */ .chroma .m , .code-inline .m { color: #009999 }
+/* LiteralNumberBin */ .chroma .mb , .code-inline .mb { color: #009999 }
+/* LiteralNumberFloat */ .chroma .mf , .code-inline .mf { color: #009999 }
+/* LiteralNumberHex */ .chroma .mh , .code-inline .mh { color: #009999 }
+/* LiteralNumberInteger */ .chroma .mi , .code-inline .mi { color: #009999 }
+/* LiteralNumberIntegerLong */ .chroma .il , .code-inline .il { color: #009999 }
+/* LiteralNumberOct */ .chroma .mo , .code-inline .mo { color: #009999 }
+/* Operator */ .chroma .o , .code-inline .o { color: #000000; font-weight: bold }
+/* OperatorWord */ .chroma .ow , .code-inline .ow { color: #000000; font-weight: bold }
+/* Punctuation */ .chroma .p , .code-inline .p {  }
+/* Comment */ .chroma .c , .code-inline .c { color: #999988; font-style: italic }
+/* CommentHashbang */ .chroma .ch , .code-inline .ch { color: #999988; font-style: italic }
+/* CommentMultiline */ .chroma .cm , .code-inline .cm { color: #999988; font-style: italic }
+/* CommentSingle */ .chroma .c1 , .code-inline .c1 { color: #999988; font-style: italic }
+/* CommentSpecial */ .chroma .cs , .code-inline .cs { color: #999999; font-weight: bold; font-style: italic }
+/* CommentPreproc */ .chroma .cp , .code-inline .cp { color: #999999; font-weight: bold; font-style: italic }
+/* CommentPreprocFile */ .chroma .cpf , .code-inline .cpf { color: #999999; font-weight: bold; font-style: italic }
+/* Generic */ .chroma .g , .code-inline .g {  }
+/* GenericDeleted */ .chroma .gd , .code-inline .gd { color: #000000; background-color: #ffdddd }
+/* GenericEmph */ .chroma .ge , .code-inline .ge { color: #000000; font-style: italic }
+/* GenericError */ .chroma .gr , .code-inline .gr { color: #aa0000 }
+/* GenericHeading */ .chroma .gh , .code-inline .gh { color: #999999 }
+/* GenericInserted */ .chroma .gi , .code-inline .gi { color: #000000; background-color: #ddffdd }
+/* GenericOutput */ .chroma .go , .code-inline .go { color: #888888 }
+/* GenericPrompt */ .chroma .gp , .code-inline .gp { color: #555555 }
+/* GenericStrong */ .chroma .gs , .code-inline .gs { font-weight: bold }
+/* GenericSubheading */ .chroma .gu , .code-inline .gu { color: #aaaaaa }
+/* GenericTraceback */ .chroma .gt , .code-inline .gt { color: #aa0000 }
+/* GenericUnderline */ .chroma .gl , .code-inline .gl { text-decoration: underline }
+/* TextWhitespace */ .chroma .w , .code-inline .w { color: #bbbbbb }
+
+         
+         /* Overrides on top of the theme and Chroma CSS */
+/* Chroma-based lines highlighting in code blocks */
+
+/* GenericHeading, GenericSubheading */
+.chroma .gh, .code-inline .gh,
+.chroma .gu, .code-inline .gu {
+    font-weight: bold;
+}
+
+/* Do not highlight error in pink background */
+/* Error */
+.chroma .err, .code-inline .err {
+    background-color: inherit;
+}
+
+/* LineTable */
+.chroma .lntable, .code-inline .lntable {
+    width: auto;
+    overflow-x: auto; /* Make the code block horizontally scrollable on narrow viewports. */
+    display: block;
+}
+
+/* LineNumbersTable, LineNumbers, Line, LineHighlight */
+/* Prevent the highlight from creating a strange artifact on line numbers. */
+.chroma .lnt, .code-inline .lnt,
+.chroma .ln, .code-inline .ln,
+.chroma .line, .code-inline .line,
+.chroma .hl, .code-inline .hl {
+    display: flex;
+}
+
+/* Set the line highlight color to match the site's theme. */
+/* LineHighlight */
+.chroma .hl, .code-inline .hl {
+    background-color: var(--theme-hl2-transp-color); /* This var is set in the head.html partial. */
+}
+
+/* Do not set the background color of inline src code*/
+.chroma.inline-src, .code-inline {
+    background-color: inherit;
+}
+
+         
+        </style>
+    
+
+    
+
+    
+    
+    
+
+    
+    <script src="/js/responsive-nav-orig.min.e2b5f2a956b488f466da513820636134defdc38b90ed566248960593f2bb4ba5.js"></script>
+    
+    <link rel="preload" href="/js/responsive-nav-orig.min.e2b5f2a956b488f466da513820636134defdc38b90ed566248960593f2bb4ba5.js" as="script">
+
+    
+    
+    <script defer src="/js/libs/fa/fontawesome-all.min.967ffa3bf856ecf0e72306c11498411e0dc50d50d6f8a2f959b7425454ee2a81.js"></script>
+    
+    <link rel="preload" href="/js/libs/fa/fontawesome-all.min.967ffa3bf856ecf0e72306c11498411e0dc50d50d6f8a2f959b7425454ee2a81.js" as="script">
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+<!-- rel="me" links for IndieAuth -->
+
+
+
+
+
+
+
+    
+ 
+<meta property="og:title" content="View GitHub Pull Requests in Magit" />
+<meta property="og:description" content="How to view GitHub Pull Request branches locally in the cloned repo,
+and more importantly, how to do that automatically from within Emacs." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/examples/code-blocks/more-from-dude/" />
+
+    
+    
+
+
+    
+        <meta property="article:published_time" content="2022-06-23T17:51:00-04:00"/>
+    
+    
+        <meta property="article:modified_time" content="2022-06-23T17:51:00-04:00"/>
+    
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+     <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="View GitHub Pull Requests in Magit"/>
+<meta name="twitter:description" content="How to view GitHub Pull Request branches locally in the cloned repo,
+and more importantly, how to do that automatically from within Emacs." />
+
+
+    
+    
+    
+     
+
+
+
+    
+    
+    
+        
+    
+
+
+     
+        
+        <meta name="DC.Creator" content="Kaushal Modi"/>
+    
+
+
+    <meta name="author" content="Kaushal Modi"/>
+
+
+
+    
+    
+    
+    <meta name="hugo-build-date" content=""/>
+    <meta name="hugo-commit-hash" content=""/>
+    <meta name="generator" content="Hugo 0.109.0">
+</head>
+
+
+    
+        <body lang="en">
+    
+
+        
+        <div class="border" id="home"></div>
+
+        <div class="wrapper">   
+            
+<nav id="nav" class="nav-collapse opened" aria-hidden="false">
+    <ul class="navbar">
+        <li><a class="" href="/">Home</a></li>
+        
+            
+                <li><a class="" href="/posts/">Posts</a></li>
+            
+        
+            
+                <li><a class="" href="/notes/">Notes</a></li>
+            
+        
+            
+        
+            
+                <li><a class="" href="/examples/">Examples</a></li>
+            
+        
+        
+            <li><a class="" href="/search/">Search</a></li>
+        
+    </ul>
+</nav>
+
+            <div class="container">
+                <header class="masthead">
+                    <div class="masthead-title no-text-decoration">
+                        <a href="/">Clint A Jordan</a> <span class="blinking-cursor">❚</span>
+                    </div>
+                    <div class="masthead-tagline">
+                        theres&#39; a doo doo in my butt
+                    </div>
+                </header>
+
+                
+
+
+
+
+
+
+
+
+<article class="post h-entry examples">
+    <header>
+        <div class="center">
+    <div class="taxo no-text-decoration">
+         
+            
+                <ul class="no-bullets inline categories">
+                    
+                        
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__emacs__"
+                                
+                                
+                                title="This is the only post categorized in ‘emacs’"
+                                
+                            >
+                                <a class="p-category" href="/categories/emacs/">emacs</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__elisp__"
+                                
+                                
+                                title="This is the only post categorized in ‘elisp’"
+                                
+                            >
+                                <a class="p-category" href="/categories/elisp/">elisp</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+                <ul class="no-bullets inline tags">
+                    
+                        
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__git__"
+                                
+                                
+                                title="This is the only post tagged with ‘git’"
+                                
+                            >
+                                <a class="p-category" href="/tags/git/">git</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__magit__"
+                                
+                                
+                                title="This is the only post tagged with ‘magit’"
+                                
+                            >
+                                <a class="p-category" href="/tags/magit/">magit</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__100daystooffload__"
+                                
+                                
+                                title="This is the only post tagged with ‘100DaysToOffload’"
+                                
+                            >
+                                <a class="p-category" href="/tags/100daystooffload/">100DaysToOffload</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__github__"
+                                
+                                
+                                title="This is the only post tagged with ‘github’"
+                                
+                            >
+                                <a class="p-category" href="/tags/github/">github</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__git-reference__"
+                                
+                                
+                                title="This is the only post tagged with ‘git-reference’"
+                                
+                            >
+                                <a class="p-category" href="/tags/git-reference/">git-reference</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        
+    </div>
+
+</div>
+
+        <h1 class="post-title p-name">View GitHub Pull Requests in Magit</h1>
+
+        
+        <data class="u-url" value="/examples/code-blocks/more-from-dude/"></data>
+
+        <div class="date-syndication">
+            
+
+
+    
+    
+    <div class="post-date">
+        
+        <time datetime="2022-06-23T17:51:00-0400" class="dt-published" title="Published date">Thu Jun 23, 2022</time>
+        
+        
+    </div>
+
+
+        </div>
+         
+
+
+
+    
+    
+    
+        
+    
+
+
+    
+        
+        <span class="hide">
+            &mdash; <a href="/" class="u-author">Kaushal Modi</a>
+        </span>
+    
+
+
+
+    </header>
+
+    <div class="content">
+        
+    <div class="description p-summary">
+        
+        
+        
+        
+        
+            
+            
+        
+        <p>How to view GitHub Pull Request branches locally in the cloned repo,
+and more importantly, how to do that automatically from within Emacs.</p>
+    </div>
+
+
+
+        
+
+
+
+
+
+                       
+
+
+        
+
+
+        <div class="e-content">
+            
+
+
+
+
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<ul>
+<li><a href="#locally-creating-a-branch-for-a-pr">Locally creating a branch for a PR</a></li>
+<li><a href="#getting-references-to-all-pull-requests">Getting references to all Pull Requests</a></li>
+<li><a href="#automatically-adding-pr-refs">Automatically adding PR refs</a></li>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<!-- raw HTML omitted -->
+<p>I have a few public projects in git repos, but I don&rsquo;t get that much
+traffic in <em>Pull Requests (PR)</em>
+<!-- raw HTML omitted --><!-- raw HTML omitted -->
+Gitlab calls these <em>Merge Requests</em> or MRs.
+<!-- raw HTML omitted --><!-- raw HTML omitted -->
+. So when I need to add additional commits to a PR, I would just add
+the PR author&rsquo;s <em>remote</em> to my local repo, <em>check out</em> their PR
+branch, add my own commits and then merge that to my project&rsquo;s <em>main</em>
+branch.</p>
+<p>As these occurrences were few and far apart, I didn&rsquo;t have a need to
+view the <em>PR branches</em> directly from within Emacs/Magit. Though, I
+somehow knew that each GitHub Pull Request&rsquo;s <em>HEAD</em> got assigned a <a href="https://git-scm.com/book/en/v2/Git-Internals-Git-References">git
+<strong>reference</strong></a>. But I didn&rsquo;t need to use that knowledge until today
+:smiley:.</p>
+<p>Today, when discussing <a href="https://github.com/protesilaos/denote/pull/20">PR # 20</a> on <a href="https://protesilaos.com/">Prot&rsquo;s</a> <a href="https://protesilaos.com/emacs/denote">Denote</a> package&rsquo;s GitHub
+mirror
+<!-- raw HTML omitted --><!-- raw HTML omitted -->
+Prot uses <a href="https://git.sr.ht/~protesilaos/denote">SourceHut</a> as the primary git forge for his Emacs
+packages. But I am glad that he doesn&rsquo;t mind the activity in Issues
+and Pull Requests on the GitHub mirror.
+<!-- raw HTML omitted --><!-- raw HTML omitted -->
+, he wrote <a href="https://github.com/protesilaos/denote/pull/20#issuecomment-1164676013">this comment</a>:</p>
+<blockquote>
+<p>Now I just need to figure out how best to incorporate your changes
+into the <code>org-id</code> branch so I can add the final bits. I am not too
+familiar with the PR workflow &hellip;</p>
+</blockquote>
+<p>.. and that inspired this post today.</p>
+
+<h2 id="locally-creating-a-branch-for-a-pr">Locally creating a branch for a PR&nbsp;<a class="headline-hash no-text-decoration" href="#locally-creating-a-branch-for-a-pr">#</a></h2>
+
+
+<p>From the <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/checking-out-pull-requests-locally">GitHub docs</a>, the <code>git</code> command to create a local branch for a
+PR is this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git fetch origin pull/ID/head:BRANCHNAME
+</span></span></code></pre></div><p>I have the <code>denote</code> package cloned from its GitHub mirror. So the
+<strong>origin</strong> remote&rsquo;s <strong>url</strong> is <code>https://github.com/protesilaos/denote</code>.</p>
+<!-- raw HTML omitted -->
+<p>Make sure that the remote name used in this command is pointing to a
+GitHub repo, and not a mirror forge like GitLab or SourceHut.</p>
+<!-- raw HTML omitted -->
+<p>When I ran the below command, I got a new branch <strong>pr-20</strong> pointing to
+the latest commit of that PR:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git fetch origin pull/20/head:pr-20
+</span></span></code></pre></div><p>Awesome!</p>
+<!-- raw HTML omitted -->
+<p>.. But that wasn&rsquo;t good enough<!-- raw HTML omitted -->
+    .. Now I wanted more<!-- raw HTML omitted -->
+        .. I didn&rsquo;t want to manually create a branch for each PR.<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+
+<h2 id="getting-references-to-all-pull-requests">Getting references to all Pull Requests&nbsp;<a class="headline-hash no-text-decoration" href="#getting-references-to-all-pull-requests">#</a></h2>
+
+
+<p>Now that I was on that quest of &ldquo;I want more&rdquo;, it didn&rsquo;t take me long
+to re-discover <a href="https://oremacs.com/2015/03/11/git-tricks/#illusion-2-quickly-get-github-pull-requests-on-your-system">this 7-year old nugget</a> by <a href="https://oremacs.com">Oleh Krehel</a>. Here are the
+relevant bits from that post:</p>
+<ol>
+<li>Open the local repo&rsquo;s <code>.git/config</code> file.</li>
+<li>Find the <code>[remote &quot;origin&quot;]</code> section</li>
+<li>Modify it by adding this one line with <strong>pull</strong> refs. <em>This is the
+same for all GitHub repositories.</em>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-cfg" data-lang="cfg"><span style="display:flex;"><span><span style="color:#66d9ef">[remote &#34;origin&#34;]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">https://github.com/USER/REPO.git
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    fetch = +refs/heads/*:refs/remotes/origin/*
+</span></span></span><span style="display:flex; background-color:#3c3d38"><span><span style="color:#e6db74">    fetch = +refs/pull/*/head:refs/pull/origin/*</span>
+</span></span></code></pre></div></li>
+</ol>
+<p>With that edit in place, when I did <!-- raw HTML omitted -->l<!-- raw HTML omitted --> <!-- raw HTML omitted -->a<!-- raw HTML omitted --> (show
+the log for all git references), followed by <!-- raw HTML omitted -->f<!-- raw HTML omitted --> <!-- raw HTML omitted -->a<!-- raw HTML omitted -->
+(fetch all the remotes) in the Magit, I could see the references to
+the <code>denote</code> repo&rsquo;s PRs!</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+
+
+
+<figure>
+    
+        <img src="/examples/code-blocks/more-from-dude/pr-20-ref.png" alt="Figure 1: Viewing PR references from denote package&rsquo;s GitHub repo"/> <figcaption>
+                <p>
+                    <!-- raw HTML omitted -->Figure 1: <!-- raw HTML omitted -->Viewing PR references from <code>denote</code> package&rsquo;s GitHub repo
+                    
+                        
+                        </p>
+                
+            </figcaption></figure>
+
+<!-- raw HTML omitted -->
+<p>.. But that still wasn&rsquo;t good enough<!-- raw HTML omitted -->
+    .. I didn&rsquo;t want to manually edit the <code>.git/config</code> in each repo.<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+
+<h2 id="automatically-adding-pr-refs">Automatically adding PR refs&nbsp;<a class="headline-hash no-text-decoration" href="#automatically-adding-pr-refs">#</a></h2>
+
+
+<p>Of course, I wasn&rsquo;t the first one to think of this!</p>
+<p>Another Emacs veteran <a href="https://endlessparentheses.com/">Artur Malabarba</a> had already had this covered
+also around <a href="https://endlessparentheses.com/automatically-configure-magit-to-access-github-prs.html">7 years back</a>. Coincidentally, that post was written as a
+response to that same blog post by Oleh where he shared the above
+<code>.git/config</code> tip.</p>
+<p>In that post, Artur shares an Emacs Lisp function that uses Magit
+functions like <code>magit-get</code>, <code>magit-get-all</code> and <code>magit-git-string</code> to
+auto-add the <code>fetch = +refs/pull/*/head:refs/pull/origin/*</code> line in
+the <code>.git/config</code>. This magic happens after checking that the <strong>origin</strong>
+remote points to a GitHub repo, and if that line doesn&rsquo;t already
+exist.</p>
+<p>Here, I am lightly modifying the function shared in that post so that
+the <strong>origin</strong> remote name is not hard-coded
+<!-- raw HTML omitted --><!-- raw HTML omitted -->
+The reason is that sometimes, I name the original remote as <strong>upstream</strong>
+and my fork as <strong>fork</strong>, and I might have no remote named <strong>origin</strong>.
+<!-- raw HTML omitted --><!-- raw HTML omitted -->
+. Credit for the main logic in this code still goes to Artur.</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(defun modi/add-PR-fetch-ref (<span style="color:#66d9ef">&amp;optional</span> remote-name)
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;If refs/pull is not defined on a GH repo, define it.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">If REMOTE-NAME is not specified, it defaults to the </span><span style="color:#e6db74">`remote&#39;</span><span style="color:#e6db74"> set
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">for the \&#34;main\&#34; or \&#34;master\&#34; branch.&#34;</span>
+</span></span><span style="display:flex;"><span>  (let* ((remote-name (or remote-name
+</span></span><span style="display:flex;"><span>                          (magit-get <span style="color:#e6db74">&#34;branch&#34;</span> <span style="color:#e6db74">&#34;main&#34;</span> <span style="color:#e6db74">&#34;remote&#34;</span>)
+</span></span><span style="display:flex;"><span>                          (magit-get <span style="color:#e6db74">&#34;branch&#34;</span> <span style="color:#e6db74">&#34;master&#34;</span> <span style="color:#e6db74">&#34;remote&#34;</span>)))
+</span></span><span style="display:flex;"><span>         (remote-url (magit-get <span style="color:#e6db74">&#34;remote&#34;</span> remote-name <span style="color:#e6db74">&#34;url&#34;</span>))
+</span></span><span style="display:flex;"><span>         (fetch-refs (and (<span style="color:#a6e22e">stringp</span> remote-url)
+</span></span><span style="display:flex;"><span>                          (<span style="color:#a6e22e">string-match</span> <span style="color:#e6db74">&#34;github&#34;</span> remote-url)
+</span></span><span style="display:flex;"><span>                          (magit-get-all <span style="color:#e6db74">&#34;remote&#34;</span> remote-name <span style="color:#e6db74">&#34;fetch&#34;</span>)))
+</span></span><span style="display:flex;"><span>         <span style="color:#75715e">;; https://oremacs.com/2015/03/11/git-tricks/</span>
+</span></span><span style="display:flex;"><span>         (fetch-address (<span style="color:#a6e22e">format</span> <span style="color:#e6db74">&#34;+refs/pull/*/head:refs/pull/%s/*&#34;</span> remote-name)))
+</span></span><span style="display:flex;"><span>    (when fetch-refs
+</span></span><span style="display:flex;"><span>      (unless (<span style="color:#a6e22e">member</span> fetch-address fetch-refs)
+</span></span><span style="display:flex;"><span>        (magit-git-string <span style="color:#e6db74">&#34;config&#34;</span>
+</span></span><span style="display:flex;"><span>                          <span style="color:#e6db74">&#34;--add&#34;</span>
+</span></span><span style="display:flex;"><span>                          (<span style="color:#a6e22e">format</span> <span style="color:#e6db74">&#34;remote.%s.fetch&#34;</span> remote-name)
+</span></span><span style="display:flex;"><span>                          fetch-address)))))
+</span></span><span style="display:flex;"><span>(add-hook <span style="color:#e6db74">&#39;magit-mode-hook</span> <span style="color:#a6e22e">#&#39;</span>modi/add-PR-fetch-ref)
+</span></span></code></pre></div><!-- raw HTML omitted -->
+
+<h2 id="summary">Summary&nbsp;<a class="headline-hash no-text-decoration" href="#summary">#</a></h2>
+
+
+<p>With the above snippet added to your Emacs config and evaluated, each
+time you visit a repo cloned from GitHub in the Magit Status buffer
+(<code>M-x magit-status</code>), the PR refs will get auto-added to that repo&rsquo;s
+<code>.git/config</code> if needed.</p>
+<p>After that, you can easily view the commits from all the PRs by doing
+<!-- raw HTML omitted -->l<!-- raw HTML omitted --> <!-- raw HTML omitted -->a<!-- raw HTML omitted --> <!-- raw HTML omitted -->f<!-- raw HTML omitted --> <!-- raw HTML omitted -->a<!-- raw HTML omitted -->.</p>
+
+<h2 id="references">References&nbsp;<a class="headline-hash no-text-decoration" href="#references">#</a></h2>
+
+
+<ul>
+<li><a href="https://oremacs.com/2015/03/11/git-tricks/#illusion-2-quickly-get-github-pull-requests-on-your-system">oremacs &ndash; Some git/magit/github tricks</a></li>
+<li><a href="https://endlessparentheses.com/automatically-configure-magit-to-access-github-prs.html">endlessparentheses &ndash; Automatically configure Magit to access Github PRs</a></li>
+<li><a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/checking-out-pull-requests-locally">GitHub &ndash; Checking out PR branches locally</a></li>
+</ul>
+
+
+        </div>
+    </div>
+</article>
+
+
+
+                <footer>
+                    
+
+
+
+    
+
+    
+
+
+
+
+
+
+    
+    
+    <hr />
+    <div>
+        <small>
+            <span class="small-caps">Versions used</span>:
+            
+                <code>emacs</code> 
+                 
+                    
+                    
+                        28.1.50
+                    
+            
+        </small>
+    </div>
+
+
+
+
+    <small id="day-counter">This is <strong>Day 1</strong> of <a href="https://100daystooffload.com/">#100DaysToOffload</a>.</small>
+
+
+<div class="no-text-decoration">
+    <div class="jump top"><a href="#" title="Top of this page">⮉</a></div>
+    <div class="jump bottom"><a href="#bottom" title="Bottom of this page">⮋</a></div>
+</div>
+
+
+ 
+    
+        <div class="hugotoc no-text-decoration">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#locally-creating-a-branch-for-a-pr">Locally creating a branch for a PR</a></li>
+    <li><a href="#getting-references-to-all-pull-requests">Getting references to all Pull Requests</a></li>
+    <li><a href="#automatically-adding-pr-refs">Automatically adding PR refs</a></li>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+            <a href="#" class="back-to-top">Back to top</a>
+        </div>
+    
+    
+<script src="/js/libs/jquery/3.3.1/jquery.slim.min.min.8089d6e39967e844179b53466618bffb9d6449749043d121e89c790a2048989d.js"></script>
+
+<link rel="preload" href="/js/libs/jquery/3.3.1/jquery.slim.min.min.8089d6e39967e844179b53466618bffb9d6449749043d121e89c790a2048989d.js" as="script">
+
+<script>(function() {
+     var $window = $(window);
+     if ($window.width() >= 1400) { 
+         var $toc = $('#TableOfContents');
+         if ($toc.length > 0) {
+             function onScroll(){
+                 var currentScroll = $window.scrollTop();
+                 var h = $('.content h1, .content h2, .content h3, .content h4, .content h5, .content h6, .h-feed h2');
+                 var id = "";
+                 h.each(function (i, e) {
+                     e = $(e);
+                     if (e.offset().top - 10 <= currentScroll) {
+                         id = e.attr('id');
+                     }
+                 });
+                 var current = $toc.find('a.current');
+                 if (current.length == 1 && current.eq(0).attr('href') == '#' + id) return true;
+
+                 current.each(function (i, e) {
+                     $(e).removeClass('current').siblings('ul').hide();
+                 });
+                 $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
+                     $(e).children('a').addClass('current').siblings('ul').show();
+                 });
+             }
+             $window.on('scroll', onScroll);
+             $(document).ready(function() {
+                 $toc.find('a').parent('li').find('ul').hide();
+                 onScroll();
+                 document.getElementsByClassName('hugotoc')[0].style.display = '';
+             });}}})();</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        
+        
+            
+        
+        
+        
+            
+        
+        
+    
+
+
+
+
+
+
+
+
+<div class="backtotop center no-text-decoration clear-float">
+    <a href="#">back to <span class="top">top</span></a>
+</div>
+
+
+<div class="right">
+    <div class="taxo no-text-decoration">
+         
+            
+                <ul class="no-bullets inline categories">
+                    
+                        
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__emacs__"
+                                
+                                
+                                title="This is the only post categorized in ‘emacs’"
+                                
+                            >
+                                <a class="p-category" href="/categories/emacs/">emacs</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__elisp__"
+                                
+                                
+                                title="This is the only post categorized in ‘elisp’"
+                                
+                            >
+                                <a class="p-category" href="/categories/elisp/">elisp</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+                <ul class="no-bullets inline tags">
+                    
+                        
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__git__"
+                                
+                                
+                                title="This is the only post tagged with ‘git’"
+                                
+                            >
+                                <a class="p-category" href="/tags/git/">git</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__magit__"
+                                
+                                
+                                title="This is the only post tagged with ‘magit’"
+                                
+                            >
+                                <a class="p-category" href="/tags/magit/">magit</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__100daystooffload__"
+                                
+                                
+                                title="This is the only post tagged with ‘100DaysToOffload’"
+                                
+                            >
+                                <a class="p-category" href="/tags/100daystooffload/">100DaysToOffload</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__github__"
+                                
+                                
+                                title="This is the only post tagged with ‘github’"
+                                
+                            >
+                                <a class="p-category" href="/tags/github/">github</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__git-reference__"
+                                
+                                
+                                title="This is the only post tagged with ‘git-reference’"
+                                
+                            >
+                                <a class="p-category" href="/tags/git-reference/">git-reference</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        
+    </div>
+
+</div>
+<div class="clear-float"></div>
+
+
+
+<div class="prev-next-navigator clear-float">
+    
+    
+        <span class="next-post right no-text-decoration">
+            <a href="/posts/foo-barski/">An ode to Arch-Linux&nbsp;»</a>
+        </span>
+    
+</div>
+
+
+<a id="bottom"></a>
+
+
+
+
+
+                       
+
+
+
+
+
+
+
+                    <ul class="no-bullets feed right inline">
+    
+</ul>
+<div class="clear-float"></div>
+
+                </footer>
+                <hr />
+            </div>               
+
+            <footer> 
+                
+
+
+<ul class="social no-text-decoration">
+    
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p class="generated">
+    Generated using  <a href="https://gitlab.com/kaushalmodi/hugo-theme-refined"><code class="nobr">hugo-theme-refined</code></a> + <span class="nobr">Hugo 0.109.0</span>
+</p>
+
+<p>
+    
+</p>
+
+
+
+
+<div class="badges no-text-decoration">
+    
+    
+
+    
+</div>
+
+
+
+
+<script>var nav=responsiveNav("#nav");</script>
+
+
+
+
+
+    
+    <script defer src="/js/libs/fragmentions/wrapper.min.b19ddbd69b83019e75a4e9bd8b5a027c75675e00329aab620ed1d470c85782ba.js"></script>
+
+
+
+
+
+
+
+
+
+
+            </footer>
+        </div> 
+    </body>
+</html>
