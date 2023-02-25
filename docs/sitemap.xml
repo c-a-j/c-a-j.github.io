@@ -2,67 +2,67 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://c-a-j.github.io/site/tags/100daystooffload/</loc>
+    <loc>https://c-a-j.github.io/tags/100daystooffload/</loc>
     <lastmod>2022-06-23T17:51:00-04:00</lastmod>
   </url><url>
-    <loc>https://c-a-j.github.io/site/categories/</loc>
+    <loc>https://c-a-j.github.io/categories/</loc>
     <lastmod>2022-06-23T17:51:00-04:00</lastmod>
   </url><url>
-    <loc>https://c-a-j.github.io/site/</loc>
+    <loc>https://c-a-j.github.io/</loc>
     <lastmod>2022-06-23T17:51:00-04:00</lastmod>
   </url><url>
-    <loc>https://c-a-j.github.io/site/categories/elisp/</loc>
+    <loc>https://c-a-j.github.io/categories/elisp/</loc>
     <lastmod>2022-06-23T17:51:00-04:00</lastmod>
   </url><url>
-    <loc>https://c-a-j.github.io/site/categories/emacs/</loc>
+    <loc>https://c-a-j.github.io/categories/emacs/</loc>
     <lastmod>2022-06-23T17:51:00-04:00</lastmod>
   </url><url>
-    <loc>https://c-a-j.github.io/site/examples/</loc>
+    <loc>https://c-a-j.github.io/examples/</loc>
     <lastmod>2022-06-23T17:51:00-04:00</lastmod>
   </url><url>
-    <loc>https://c-a-j.github.io/site/tags/git/</loc>
+    <loc>https://c-a-j.github.io/tags/git/</loc>
     <lastmod>2022-06-23T17:51:00-04:00</lastmod>
   </url><url>
-    <loc>https://c-a-j.github.io/site/tags/git-reference/</loc>
+    <loc>https://c-a-j.github.io/tags/git-reference/</loc>
     <lastmod>2022-06-23T17:51:00-04:00</lastmod>
   </url><url>
-    <loc>https://c-a-j.github.io/site/tags/github/</loc>
+    <loc>https://c-a-j.github.io/tags/github/</loc>
     <lastmod>2022-06-23T17:51:00-04:00</lastmod>
   </url><url>
-    <loc>https://c-a-j.github.io/site/tags/magit/</loc>
+    <loc>https://c-a-j.github.io/tags/magit/</loc>
     <lastmod>2022-06-23T17:51:00-04:00</lastmod>
   </url><url>
-    <loc>https://c-a-j.github.io/site/tags/</loc>
+    <loc>https://c-a-j.github.io/tags/</loc>
     <lastmod>2022-06-23T17:51:00-04:00</lastmod>
   </url><url>
-    <loc>https://c-a-j.github.io/site/examples/code-blocks/more-from-dude/</loc>
+    <loc>https://c-a-j.github.io/examples/code-blocks/more-from-dude/</loc>
     <lastmod>2022-06-23T17:51:00-04:00</lastmod>
   </url><url>
-    <loc>https://c-a-j.github.io/site/posts/foo-barski/</loc>
+    <loc>https://c-a-j.github.io/posts/foo-barski/</loc>
     <lastmod>2019-09-06T12:32:13-04:00</lastmod>
   </url><url>
-    <loc>https://c-a-j.github.io/site/tags/arch-linux/</loc>
+    <loc>https://c-a-j.github.io/tags/arch-linux/</loc>
     <lastmod>2019-09-06T12:32:13-04:00</lastmod>
   </url><url>
-    <loc>https://c-a-j.github.io/site/categories/linux/</loc>
+    <loc>https://c-a-j.github.io/categories/linux/</loc>
     <lastmod>2019-09-06T12:32:13-04:00</lastmod>
   </url><url>
-    <loc>https://c-a-j.github.io/site/notes/</loc>
+    <loc>https://c-a-j.github.io/notes/</loc>
     <lastmod>2019-09-06T12:32:13-04:00</lastmod>
   </url><url>
-    <loc>https://c-a-j.github.io/site/posts/</loc>
+    <loc>https://c-a-j.github.io/posts/</loc>
     <lastmod>2019-09-06T12:32:13-04:00</lastmod>
   </url><url>
-    <loc>https://c-a-j.github.io/site/tags/ramblings/</loc>
+    <loc>https://c-a-j.github.io/tags/ramblings/</loc>
     <lastmod>2019-09-06T12:32:13-04:00</lastmod>
   </url><url>
-    <loc>https://c-a-j.github.io/site/notes/foo-barski/</loc>
+    <loc>https://c-a-j.github.io/notes/foo-barski/</loc>
     <lastmod>2019-09-06T12:32:13-04:00</lastmod>
   </url><url>
-    <loc>https://c-a-j.github.io/site/categories/unix/</loc>
+    <loc>https://c-a-j.github.io/categories/unix/</loc>
     <lastmod>2019-09-06T12:32:13-04:00</lastmod>
   </url><url>
-    <loc>https://c-a-j.github.io/site/search/</loc>
+    <loc>https://c-a-j.github.io/search/</loc>
     <priority>0.1</priority>
   </url>
 </urlset>
