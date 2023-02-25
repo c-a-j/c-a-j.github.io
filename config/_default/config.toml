@@ -20,7 +20,7 @@ publishDir = "docs"
   # https://github.com/tummychow/lanyon-hugo/issues/2#issuecomment-253274278
   # Go date formats: https://golang.org/pkg/time/#pkg-constants
     mainSections = [ "posts", "notes", "my-notes", "examples" ]
-    tagLine = "theres' a doo doo in my butt"
+    tagLine = "a work in progres"
     dateform = "Mon Jan 2, 2006"
 
   themecolorbase = "dark" # Valid values: "red", "orange", "yellow", "green", "cyan", "blue", "magenta", "brown"
