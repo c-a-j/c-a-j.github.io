@@ -6,19 +6,19 @@
                 
             
             Clint A Jordan</title>
-        <link>/tags/ramblings/</link>
+        <link>https://c-a-j.github.io/site/tags/ramblings/</link>
         <description>Recent content  in ramblings
             on Clint A Jordan</description>
         
-        <lastBuildDate>Sat, 25 Feb 2023 00:20:41 -0700</lastBuildDate>
+        <lastBuildDate>Sat, 25 Feb 2023 00:24:46 -0700</lastBuildDate>
         <generator>Hugo -- gohugo.io</generator>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
-            <atom:link href="/tags/ramblings/index.xml" rel="self" type="application/rss&#43;xml" />
+            <atom:link href="https://c-a-j.github.io/site/tags/ramblings/index.xml" rel="self" type="application/rss&#43;xml" />
         
             
             <item>
                 <title>this is starting to not suck</title>
-                <link>/notes/foo-barski/</link>
+                <link>https://c-a-j.github.io/site/notes/foo-barski/</link>
                 
                 
                 <description>&lt;blockquote&gt;Collection of &lt;code&gt;awk&lt;/code&gt; examples.&lt;/blockquote&gt;
@@ -47,7 +47,7 @@
                             
                                 
                                  
-                                    <category domain="/categories/unix">unix</category>
+                                    <category domain="https://c-a-j.github.io/site/categories/unix">unix</category>
                                 
                             
                         
@@ -57,13 +57,13 @@
                             
                                 
                                  
-                                    <category domain="/tags/ramblings">ramblings</category>
+                                    <category domain="https://c-a-j.github.io/site/tags/ramblings">ramblings</category>
                                 
                             
                         
                     
                 
-                <guid>/notes/foo-barski/</guid>
+                <guid>https://c-a-j.github.io/site/notes/foo-barski/</guid>
                 <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
             </item>
         

@@ -6,19 +6,19 @@
                 
             
             Clint A Jordan</title>
-        <link>/categories/elisp/</link>
+        <link>https://c-a-j.github.io/site/categories/elisp/</link>
         <description>Recent content  in elisp
             on Clint A Jordan</description>
         
-        <lastBuildDate>Sat, 25 Feb 2023 00:20:41 -0700</lastBuildDate>
+        <lastBuildDate>Sat, 25 Feb 2023 00:24:46 -0700</lastBuildDate>
         <generator>Hugo -- gohugo.io</generator>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
-            <atom:link href="/categories/elisp/index.xml" rel="self" type="application/rss&#43;xml" />
+            <atom:link href="https://c-a-j.github.io/site/categories/elisp/index.xml" rel="self" type="application/rss&#43;xml" />
         
             
             <item>
                 <title>View GitHub Pull Requests in Magit</title>
-                <link>/examples/code-blocks/more-from-dude/</link>
+                <link>https://c-a-j.github.io/site/examples/code-blocks/more-from-dude/</link>
                 
                 
                 <description>&lt;blockquote&gt;How to view GitHub Pull Request branches locally in the cloned repo,
@@ -110,7 +110,7 @@ the &lt;code&gt;denote&lt;/code&gt; repo&amp;rsquo;s PRs!&lt;/p&gt;
 
 &lt;figure&gt;
     
-        &lt;img src=&#34;/examples/code-blocks/more-from-dude/pr-20-ref.png&#34; alt=&#34;Figure 1: Viewing PR references from denote package&amp;rsquo;s GitHub repo&#34;/&gt; &lt;figcaption&gt;
+        &lt;img src=&#34;https://c-a-j.github.io/site/examples/code-blocks/more-from-dude/pr-20-ref.png&#34; alt=&#34;Figure 1: Viewing PR references from denote package&amp;rsquo;s GitHub repo&#34;/&gt; &lt;figcaption&gt;
                 &lt;p&gt;
                     &lt;!-- raw HTML omitted --&gt;Figure 1: &lt;!-- raw HTML omitted --&gt;Viewing PR references from &lt;code&gt;denote&lt;/code&gt; package&amp;rsquo;s GitHub repo
                     
@@ -197,9 +197,9 @@ time you visit a repo cloned from GitHub in the Magit Status buffer
                             
                                 
                                  
-                                    <category domain="/categories/emacs">emacs</category>
+                                    <category domain="https://c-a-j.github.io/site/categories/emacs">emacs</category>
                                  
-                                    <category domain="/categories/elisp">elisp</category>
+                                    <category domain="https://c-a-j.github.io/site/categories/elisp">elisp</category>
                                 
                             
                         
@@ -209,21 +209,21 @@ time you visit a repo cloned from GitHub in the Magit Status buffer
                             
                                 
                                  
-                                    <category domain="/tags/git">git</category>
+                                    <category domain="https://c-a-j.github.io/site/tags/git">git</category>
                                  
-                                    <category domain="/tags/magit">magit</category>
+                                    <category domain="https://c-a-j.github.io/site/tags/magit">magit</category>
                                  
-                                    <category domain="/tags/100daystooffload">100DaysToOffload</category>
+                                    <category domain="https://c-a-j.github.io/site/tags/100daystooffload">100DaysToOffload</category>
                                  
-                                    <category domain="/tags/github">github</category>
+                                    <category domain="https://c-a-j.github.io/site/tags/github">github</category>
                                  
-                                    <category domain="/tags/git-reference">git-reference</category>
+                                    <category domain="https://c-a-j.github.io/site/tags/git-reference">git-reference</category>
                                 
                             
                         
                     
                 
-                <guid>/examples/code-blocks/more-from-dude/</guid>
+                <guid>https://c-a-j.github.io/site/examples/code-blocks/more-from-dude/</guid>
                 <pubDate>Thu, 23 Jun 2022 17:51:00 -0400</pubDate>
             </item>
         

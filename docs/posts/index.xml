@@ -6,19 +6,19 @@
                 
             
             Clint A Jordan</title>
-        <link>/posts/</link>
+        <link>https://c-a-j.github.io/site/posts/</link>
         <description>Recent content  in Posts
             on Clint A Jordan</description>
         
-        <lastBuildDate>Sat, 25 Feb 2023 00:20:41 -0700</lastBuildDate>
+        <lastBuildDate>Sat, 25 Feb 2023 00:24:46 -0700</lastBuildDate>
         <generator>Hugo -- gohugo.io</generator>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
-            <atom:link href="/posts/index.xml" rel="self" type="application/rss&#43;xml" />
+            <atom:link href="https://c-a-j.github.io/site/posts/index.xml" rel="self" type="application/rss&#43;xml" />
         
             
             <item>
                 <title>An ode to Arch-Linux</title>
-                <link>/posts/foo-barski/</link>
+                <link>https://c-a-j.github.io/site/posts/foo-barski/</link>
                 
                 
                 <description>&lt;blockquote&gt;It&amp;rsquo;s simply great&lt;/blockquote&gt;</description>
@@ -31,9 +31,9 @@
                             
                                 
                                  
-                                    <category domain="/categories/unix">unix</category>
+                                    <category domain="https://c-a-j.github.io/site/categories/unix">unix</category>
                                  
-                                    <category domain="/categories/linux">Linux</category>
+                                    <category domain="https://c-a-j.github.io/site/categories/linux">Linux</category>
                                 
                             
                         
@@ -43,13 +43,13 @@
                             
                                 
                                  
-                                    <category domain="/tags/arch-linux">Arch-Linux</category>
+                                    <category domain="https://c-a-j.github.io/site/tags/arch-linux">Arch-Linux</category>
                                 
                             
                         
                     
                 
-                <guid>/posts/foo-barski/</guid>
+                <guid>https://c-a-j.github.io/site/posts/foo-barski/</guid>
                 <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
             </item>
         
