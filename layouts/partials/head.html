@@ -78,9 +78,10 @@
          --theme-hl1-font-color: {{ index . "highlight_1_font_color" | safeCSS }};
          --theme-hl2-color: {{ index . "highlight_2_color" | safeCSS }};
          --theme-hl2-font-color: {{ index . "highlight_2_font_color" | safeCSS }};
-         --theme-hl2-transp-color: {{ index . "highlight_2_transparent_color" | safeCSS }};
+         --theme-hl3-transp-color: {{ index . "highlight_2_transparent_color" | safeCSS }};
          --theme-block-quote-font-color: {{ index . "block_quote_font_color" | safeCSS }};
          --theme-cursor-blink-color: {{ index . "cursor_blink_color" | safeCSS }};
+         --theme-hamburger-bg-color: {{ index . "hamburger_bg_color" | safeCSS }};
      }
      {{ end }}
      html {
