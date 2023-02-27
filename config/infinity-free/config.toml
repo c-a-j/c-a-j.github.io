@@ -1,1 +1,2 @@
 baseURL = 'http://c-a-j.great-site.net'
+publishDir = 'htdocs'

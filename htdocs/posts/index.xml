@@ -1,0 +1,59 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>
+            
+                    Posts on
+                
+            
+            Clint A Jordan</title>
+        <link>http://c-a-j.great-site.net/posts/</link>
+        <description>Recent content  in Posts
+            on Clint A Jordan</description>
+        
+        <lastBuildDate>Sun, 26 Feb 2023 15:56:34 -0700</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+            <atom:link href="http://c-a-j.great-site.net/posts/index.xml" rel="self" type="application/rss&#43;xml" />
+        
+            
+            <item>
+                <title>An ode to Arch-Linux</title>
+                <link>http://c-a-j.great-site.net/posts/foo-barski/</link>
+                
+                
+                <description>&lt;blockquote&gt;It&amp;rsquo;s simply great&lt;/blockquote&gt;</description>
+                
+                        <author>Clint.Jordan@fakeEmailToMakeValidatorHappy.com (Clint Jordan)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="http://c-a-j.great-site.net/categories/unix">unix</category>
+                                 
+                                    <category domain="http://c-a-j.great-site.net/categories/linux">Linux</category>
+                                
+                            
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="http://c-a-j.great-site.net/tags/arch-linux">Arch-Linux</category>
+                                
+                            
+                        
+                    
+                
+                <guid>http://c-a-j.great-site.net/posts/foo-barski/</guid>
+                <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
+            </item>
+        
+    </channel>
+</rss>
+
+
