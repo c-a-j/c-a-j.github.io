@@ -748,21 +748,21 @@ h6 .section-num {
 }
 
 /* ** Post-fix "notes" to Notes headings in summaries, post singles */
-.post.notes h1::after,
-.summary.notes h2 a::after {
-    content: "notes";
-    padding: 0px 5px 0px 5px;   /* top, right, bottom, left */
-    vertical-align: 0.05em;
-    margin-left: 5px;
-}
-.post.notes h1::after {
-    background: var(--theme-heading-color);
-    color: white;
-}
-.summary.notes h2 a::after {
-    background: var(--theme-color);
-    color: white;
-}
+/* .post.notes h1::after,
+/* .summary.notes h2 a::after {
+/*     content: "notes";
+/*     padding: 0px 5px 0px 5px;   /* top, right, bottom, left */
+/*     vertical-align: 0.05em;
+/*     margin-left: 5px;
+/* }
+/* .post.notes h1::after {
+/*     background: var(--theme-heading-color);
+/*     color: white;
+/* }
+/* .summary.notes h2 a::after {
+/*     background: var(--theme-color);
+/*     color: white;
+/* }
 
 /* * Post-fix a "." to section numbers */
 .section-num::after {
