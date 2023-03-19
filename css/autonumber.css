@@ -1,0 +1,38 @@
+body{counter-reset: section}
+h2{counter-reset: sub-section}
+h3{counter-reset: composite}
+h4{counter-reset: detail}
+
+.content h2::before,
+.content h3::before,
+.content h4::before,
+.content h5::before,
+.content h6::before {
+/*     font-family: var(--tertiary-font); */
+    color: var(--theme-hl1-color); 
+    font-size: 1em;
+    vertical-align: 0%;       /* more negative -> goes lower */ 
+    letter-spacing: 0em;
+    margin-right: 12pt; 
+}
+
+.content h2:before{
+    color: var(--theme-color); 
+    counter-increment: section;
+    content: counter(section) ".";
+}
+
+.content h3:before{
+    counter-increment: sub-section;
+    content: counter(section) "." counter(sub-section) " ";
+}
+
+.content h4:before{
+    counter-increment: composite;
+    content: counter(section) "." counter(sub-section) "." counter(composite) " ";
+}
+
+.content h5:before{
+ counter-increment: detail;
+ content: counter(section) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";
+}
