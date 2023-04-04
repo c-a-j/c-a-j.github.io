@@ -8,10 +8,573 @@
         <description>Recent content 
             on Clint A Jordan</description>
         
-        <lastBuildDate>Sun, 19 Mar 2023 13:08:03 -0600</lastBuildDate>
+        <lastBuildDate>Tue, 04 Apr 2023 17:09:07 -0600</lastBuildDate>
         <generator>Hugo -- gohugo.io</generator>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
             <atom:link href="https://c-a-j.github.io/index.xml" rel="self" type="application/rss&#43;xml" />
+        
+            
+            <item>
+                <title>Oracle DB Security Assessment Tool</title>
+                <link>https://c-a-j.github.io/notes/dbsat/</link>
+                
+                
+                <description>&lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;download-archive&#34;&gt;Download archive&amp;nbsp;&lt;a class=&#34;headline-hash no-text-decoration&#34; href=&#34;#download-archive&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;
+
+
+&lt;p&gt;&lt;a href=&#34;https://www.oracle.com/database/technologies/security/dbsat.html#:~:text=Oracle%20Database%20Security%20Assessment%20Tool%20(DBSAT)%20is%20a%20popular%20command,controls%20to%20mitigate%20those%20risks.&#34;&gt;Download&lt;/a&gt;
+from Oracle.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note: My Oracle Support account is required.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;upload-archive-to-target-domain&#34;&gt;Upload archive to target domain&amp;nbsp;&lt;a class=&#34;headline-hash no-text-decoration&#34; href=&#34;#upload-archive-to-target-domain&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;
+
+
+&lt;p&gt;Upload the archive via WinSCP or other method.&lt;/p&gt;
+
+&lt;h2 id=&#34;stage-archive-and-extract-contents&#34;&gt;Stage archive and extract contents&amp;nbsp;&lt;a class=&#34;headline-hash no-text-decoration&#34; href=&#34;#stage-archive-and-extract-contents&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;
+
+
+&lt;p&gt;Move or copy the archive to &lt;code&gt;/tmp&lt;/code&gt;
+
+&lt;html lang=&#34;en&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt; 
+    &lt;div class=&#34;code-toolbar&#34;&gt;
+        &lt;pre 
+            tabindex=&#34;0&#34; 
+            style=&#34;
+                display:block;
+                color:#f8f8f2;
+                background-color:#272822;
+                -moz-tab-size:4;
+                -o-tab-size:4;tab-size:4;
+                &#34;
+            class=&#34;command-line&#34;
+            lang=&#34;en&#34;
+            data-prompt=&#34;p-acct $&#34;
+            data-output=&#34;&#34;
+            data-filter-output=&#34;(out)&#34;
+            data-continuation-str=&#34;&#34;
+            data-continuation-prompt=&#34;&amp;gt;&#34;
+            &gt;
+
+            &lt;code class=&#34;language-shell&#34;&gt;
+                    
+mv dbsat.zip /tmp
+
+            &lt;/code&gt;
+        &lt;/pre&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/html&gt;
+&lt;/p&gt;
+&lt;p&gt;Log in as &lt;code&gt;root&lt;/code&gt; and change ownership of the archive
+
+&lt;html lang=&#34;en&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt; 
+    &lt;div class=&#34;code-toolbar&#34;&gt;
+        &lt;pre 
+            tabindex=&#34;0&#34; 
+            style=&#34;
+                display:block;
+                color:#f8f8f2;
+                background-color:#272822;
+                -moz-tab-size:4;
+                -o-tab-size:4;tab-size:4;
+                &#34;
+            class=&#34;command-line&#34;
+            lang=&#34;en&#34;
+            data-prompt=&#34;p-acct $&#34;
+            data-output=&#34;&#34;
+            data-filter-output=&#34;(out)&#34;
+            data-continuation-str=&#34;&#34;
+            data-continuation-prompt=&#34;&amp;gt;&#34;
+            &gt;
+
+            &lt;code class=&#34;language-shell&#34;&gt;
+                    
+sudo -iu root
+
+            &lt;/code&gt;
+        &lt;/pre&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/html&gt;
+&lt;/p&gt;
+
+&lt;html lang=&#34;en&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt; 
+    &lt;div class=&#34;code-toolbar&#34;&gt;
+        &lt;pre 
+            tabindex=&#34;0&#34; 
+            style=&#34;
+                display:block;
+                color:#f8f8f2;
+                background-color:#272822;
+                -moz-tab-size:4;
+                -o-tab-size:4;tab-size:4;
+                &#34;
+            class=&#34;command-line&#34;
+            lang=&#34;en&#34;
+            data-prompt=&#34;root $&#34;
+            data-output=&#34;&#34;
+            data-filter-output=&#34;(out)&#34;
+            data-continuation-str=&#34;&#34;
+            data-continuation-prompt=&#34;&amp;gt;&#34;
+            &gt;
+
+            &lt;code class=&#34;language-shell&#34;&gt;
+                    
+cd /tmp
+chown oracle:oinstall dbsat.zip
+
+            &lt;/code&gt;
+        &lt;/pre&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/html&gt;
+
+&lt;p&gt;Log in as &lt;code&gt;oracle&lt;/code&gt; and verify environment
+
+&lt;html lang=&#34;en&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt; 
+    &lt;div class=&#34;code-toolbar&#34;&gt;
+        &lt;pre 
+            tabindex=&#34;0&#34; 
+            style=&#34;
+                display:block;
+                color:#f8f8f2;
+                background-color:#272822;
+                -moz-tab-size:4;
+                -o-tab-size:4;tab-size:4;
+                &#34;
+            class=&#34;command-line&#34;
+            lang=&#34;en&#34;
+            data-prompt=&#34;root $&#34;
+            data-output=&#34;&#34;
+            data-filter-output=&#34;(out)&#34;
+            data-continuation-str=&#34;&#34;
+            data-continuation-prompt=&#34;&amp;gt;&#34;
+            &gt;
+
+            &lt;code class=&#34;language-shell&#34;&gt;
+                    
+exit
+
+            &lt;/code&gt;
+        &lt;/pre&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/html&gt;
+&lt;/p&gt;
+
+&lt;html lang=&#34;en&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt; 
+    &lt;div class=&#34;code-toolbar&#34;&gt;
+        &lt;pre 
+            tabindex=&#34;0&#34; 
+            style=&#34;
+                display:block;
+                color:#f8f8f2;
+                background-color:#272822;
+                -moz-tab-size:4;
+                -o-tab-size:4;tab-size:4;
+                &#34;
+            class=&#34;command-line&#34;
+            lang=&#34;en&#34;
+            data-prompt=&#34;p-acct $&#34;
+            data-output=&#34;3-20&#34;
+            data-filter-output=&#34;(out)&#34;
+            data-continuation-str=&#34;&#34;
+            data-continuation-prompt=&#34;&amp;gt;&#34;
+            &gt;
+
+            &lt;code class=&#34;language-shell&#34;&gt;
+                    
+sudo -iu oracle
+
+            &lt;/code&gt;
+        &lt;/pre&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/html&gt;
+
+
+&lt;html lang=&#34;en&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt; 
+    &lt;div class=&#34;code-toolbar&#34;&gt;
+        &lt;pre 
+            tabindex=&#34;0&#34; 
+            style=&#34;
+                display:block;
+                color:#f8f8f2;
+                background-color:#272822;
+                -moz-tab-size:4;
+                -o-tab-size:4;tab-size:4;
+                &#34;
+            class=&#34;command-line&#34;
+            lang=&#34;en&#34;
+            data-prompt=&#34;oracle $&#34;
+            data-output=&#34;2-20&#34;
+            data-filter-output=&#34;(out)&#34;
+            data-continuation-str=&#34;&#34;
+            data-continuation-prompt=&#34;&amp;gt;&#34;
+            &gt;
+
+            &lt;code class=&#34;language-shell&#34;&gt;
+                    
+env | grep ORA
+ORACLE_UNQNAME=orcl
+ORA_NLS10=/opt/oracle/product/19/db_1/nls/data
+ORACLE_SID=edba02t
+ORACLE_BASE=/opt/oracle
+ORACLE_TERM=xterm
+ORACLE_HOME=/opt/oracle/product/19/db_1
+
+            &lt;/code&gt;
+        &lt;/pre&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/html&gt;
+
+&lt;p&gt;Create a &lt;code&gt;dbsat&lt;/code&gt; directory
+
+&lt;html lang=&#34;en&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt; 
+    &lt;div class=&#34;code-toolbar&#34;&gt;
+        &lt;pre 
+            tabindex=&#34;0&#34; 
+            style=&#34;
+                display:block;
+                color:#f8f8f2;
+                background-color:#272822;
+                -moz-tab-size:4;
+                -o-tab-size:4;tab-size:4;
+                &#34;
+            class=&#34;command-line&#34;
+            lang=&#34;en&#34;
+            data-prompt=&#34;oracle $&#34;
+            data-output=&#34;&#34;
+            data-filter-output=&#34;(out)&#34;
+            data-continuation-str=&#34;&#34;
+            data-continuation-prompt=&#34;&amp;gt;&#34;
+            &gt;
+
+            &lt;code class=&#34;language-shell&#34;&gt;
+                    
+mkdir /tmp/dbsat
+
+            &lt;/code&gt;
+        &lt;/pre&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/html&gt;
+&lt;/p&gt;
+&lt;p&gt;Extract the archive contents
+
+&lt;html lang=&#34;en&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt; 
+    &lt;div class=&#34;code-toolbar&#34;&gt;
+        &lt;pre 
+            tabindex=&#34;0&#34; 
+            style=&#34;
+                display:block;
+                color:#f8f8f2;
+                background-color:#272822;
+                -moz-tab-size:4;
+                -o-tab-size:4;tab-size:4;
+                &#34;
+            class=&#34;command-line&#34;
+            lang=&#34;en&#34;
+            data-prompt=&#34;oracle $&#34;
+            data-output=&#34;&#34;
+            data-filter-output=&#34;(out)&#34;
+            data-continuation-str=&#34;&#34;
+            data-continuation-prompt=&#34;&amp;gt;&#34;
+            &gt;
+
+            &lt;code class=&#34;language-shell&#34;&gt;
+                    
+unzip /tmp/dbsat.zip -d /tmp/dbsat
+
+            &lt;/code&gt;
+        &lt;/pre&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/html&gt;
+&lt;/p&gt;
+
+&lt;h2 id=&#34;unlock-the-system-user&#34;&gt;Unlock the &lt;code&gt;system&lt;/code&gt; user&amp;nbsp;&lt;a class=&#34;headline-hash no-text-decoration&#34; href=&#34;#unlock-the-system-user&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;
+
+
+
+&lt;html lang=&#34;en&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt; 
+    &lt;div class=&#34;code-toolbar&#34;&gt;
+        &lt;pre 
+            tabindex=&#34;0&#34; 
+            style=&#34;
+                display:block;
+                color:#f8f8f2;
+                background-color:#272822;
+                -moz-tab-size:4;
+                -o-tab-size:4;tab-size:4;
+                &#34;
+            class=&#34;command-line&#34;
+            lang=&#34;en&#34;
+            data-prompt=&#34;oracle $&#34;
+            data-output=&#34;&#34;
+            data-filter-output=&#34;(out)&#34;
+            data-continuation-str=&#34;&#34;
+            data-continuation-prompt=&#34;&amp;gt;&#34;
+            &gt;
+
+            &lt;code class=&#34;language-shell&#34;&gt;
+                    
+sqlplus / as sysdba
+
+            &lt;/code&gt;
+        &lt;/pre&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/html&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Note: An alias for this may exist. Check for it with &lt;code&gt;alias&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;html lang=&#34;en&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt; 
+    &lt;div class=&#34;code-toolbar&#34;&gt;
+        &lt;pre 
+            tabindex=&#34;0&#34; 
+            style=&#34;
+                display:block;
+                color:#f8f8f2;
+                background-color:#272822;
+                -moz-tab-size:4;
+                -o-tab-size:4;tab-size:4;
+                &#34;
+            class=&#34;command-line&#34;
+            lang=&#34;en&#34;
+            data-prompt=&#34;SQL&amp;gt;&#34;
+            data-output=&#34;&#34;
+            data-filter-output=&#34;(out)&#34;
+            data-continuation-str=&#34;&#34;
+            data-continuation-prompt=&#34;&amp;gt;&#34;
+            &gt;
+
+            &lt;code class=&#34;language-sql&#34;&gt;
+                    
+alter user system identified by &#34;PASSWORD&#34;;
+alter user system account unlock;
+exit
+
+            &lt;/code&gt;
+        &lt;/pre&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/html&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Note: &lt;code&gt;&amp;quot;PASSWORD&amp;quot;&lt;/code&gt; needs to be replaced by a password of sufficient
+complexity. For example, the password used for this test was 22 characters
+long and included two capital letters, ten lowercase, eight numbers, and two
+special characters. Be sure to take note of the password used, it will be
+needed later.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;collect-report-data&#34;&gt;Collect report data&amp;nbsp;&lt;a class=&#34;headline-hash no-text-decoration&#34; href=&#34;#collect-report-data&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;
+
+
+
+&lt;html lang=&#34;en&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt; 
+    &lt;div class=&#34;code-toolbar&#34;&gt;
+        &lt;pre 
+            tabindex=&#34;0&#34; 
+            style=&#34;
+                display:block;
+                color:#f8f8f2;
+                background-color:#272822;
+                -moz-tab-size:4;
+                -o-tab-size:4;tab-size:4;
+                &#34;
+            class=&#34;command-line&#34;
+            lang=&#34;en&#34;
+            data-prompt=&#34;oracle $&#34;
+            data-output=&#34;&#34;
+            data-filter-output=&#34;(out)&#34;
+            data-continuation-str=&#34;&#34;
+            data-continuation-prompt=&#34;&amp;gt;&#34;
+            &gt;
+
+            &lt;code class=&#34;language-shell&#34;&gt;
+                    
+mkdir /tmp/dbsat/reports
+cd /tmp/dbsat/reports
+bash /tmp/dbsat/dbsat collect -n system@${ORACLE_SID} &#34;${ORACLE_SID}_$(date +%Y-%m-%d)&#34;
+
+            &lt;/code&gt;
+        &lt;/pre&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/html&gt;
+
+
+&lt;h2 id=&#34;generate-readable-report&#34;&gt;Generate readable report&amp;nbsp;&lt;a class=&#34;headline-hash no-text-decoration&#34; href=&#34;#generate-readable-report&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;
+
+
+
+&lt;html lang=&#34;en&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt; 
+    &lt;div class=&#34;code-toolbar&#34;&gt;
+        &lt;pre 
+            tabindex=&#34;0&#34; 
+            style=&#34;
+                display:block;
+                color:#f8f8f2;
+                background-color:#272822;
+                -moz-tab-size:4;
+                -o-tab-size:4;tab-size:4;
+                &#34;
+            class=&#34;command-line&#34;
+            lang=&#34;en&#34;
+            data-prompt=&#34;oracle $&#34;
+            data-output=&#34;&#34;
+            data-filter-output=&#34;(out)&#34;
+            data-continuation-str=&#34;&#34;
+            data-continuation-prompt=&#34;&amp;gt;&#34;
+            &gt;
+
+            &lt;code class=&#34;language-shell&#34;&gt;
+                    
+bash /tmp/dbsat/dbsat report -n -a &#34;${ORACLE_SID}_$(date +%Y-%m-%d)&#34;
+
+            &lt;/code&gt;
+        &lt;/pre&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/html&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Note: The above command will only work if you are generating the &lt;code&gt;.html&lt;/code&gt;
+report on the same day that the data was collected. Otherwise you will need to
+manually replace &lt;code&gt;${ORACLE_SID}_$(date +%Y-%m-%d)&lt;/code&gt; with the filename.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;copy-report-to-p-account-home&#34;&gt;Copy report to p-account home&amp;nbsp;&lt;a class=&#34;headline-hash no-text-decoration&#34; href=&#34;#copy-report-to-p-account-home&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;
+
+
+&lt;p&gt;Change permissions of the &lt;code&gt;.html&lt;/code&gt; report file
+
+&lt;html lang=&#34;en&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt; 
+    &lt;div class=&#34;code-toolbar&#34;&gt;
+        &lt;pre 
+            tabindex=&#34;0&#34; 
+            style=&#34;
+                display:block;
+                color:#f8f8f2;
+                background-color:#272822;
+                -moz-tab-size:4;
+                -o-tab-size:4;tab-size:4;
+                &#34;
+            class=&#34;command-line&#34;
+            lang=&#34;en&#34;
+            data-prompt=&#34;oracle $&#34;
+            data-output=&#34;&#34;
+            data-filter-output=&#34;(out)&#34;
+            data-continuation-str=&#34;&#34;
+            data-continuation-prompt=&#34;&amp;gt;&#34;
+            &gt;
+
+            &lt;code class=&#34;language-shell&#34;&gt;
+                    
+chmod 777 &#34;${ORACLE_SID}_$(date +%Y-%m-%d)_report.html&#34;
+exit
+
+            &lt;/code&gt;
+        &lt;/pre&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/html&gt;
+&lt;/p&gt;
+
+&lt;html lang=&#34;en&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt; 
+    &lt;div class=&#34;code-toolbar&#34;&gt;
+        &lt;pre 
+            tabindex=&#34;0&#34; 
+            style=&#34;
+                display:block;
+                color:#f8f8f2;
+                background-color:#272822;
+                -moz-tab-size:4;
+                -o-tab-size:4;tab-size:4;
+                &#34;
+            class=&#34;command-line&#34;
+            lang=&#34;en&#34;
+            data-prompt=&#34;p-acct $&#34;
+            data-output=&#34;&#34;
+            data-filter-output=&#34;(out)&#34;
+            data-continuation-str=&#34;&#34;
+            data-continuation-prompt=&#34;&amp;gt;&#34;
+            &gt;
+
+            &lt;code class=&#34;language-shell&#34;&gt;
+                    
+cp /tmp/dbsat/reports/REPORT_NAME ~/wherever/you/want/
+
+            &lt;/code&gt;
+        &lt;/pre&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/html&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Note: Replace &lt;code&gt;REPORT_NAME&lt;/code&gt; with the &lt;code&gt;.html&lt;/code&gt; report filename and
+&lt;code&gt;~/wherever/you/want/&lt;/code&gt; to the desired path within your home directory.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;automation-idea&#34;&gt;Automation idea&amp;nbsp;&lt;a class=&#34;headline-hash no-text-decoration&#34; href=&#34;#automation-idea&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;
+
+
+&lt;p&gt;We may be able to script this process and run it on an OEM console to get
+reports for every database all at once.&lt;/p&gt;
+</description>
+                
+                        <author>Clint.Jordan@fakeEmailToMakeValidatorHappy.com (Clint Jordan)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://c-a-j.github.io/categories/notes">notes</category>
+                                
+                            
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://c-a-j.github.io/tags/oracle">oracle</category>
+                                 
+                                    <category domain="https://c-a-j.github.io/tags/stig">STIG</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://c-a-j.github.io/notes/dbsat/</guid>
+                <pubDate>Mon, 03 Apr 2023 00:00:00 +0000</pubDate>
+            </item>
         
             
             <item>

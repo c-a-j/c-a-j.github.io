@@ -17,17 +17,15 @@
 
     
     
-        <meta name="description" content="Collection of awk examples."/>
-    
 
     
     
-        <meta name="keywords" content="ramblings, unix"/>
+        <meta name="keywords" content="oracle, STIG, notes"/>
     
 
     <title>
         
-            this is starting to not suck ❚ Clint A Jordan
+            Oracle DB Security Assessment Tool ❚ Clint A Jordan
         
     </title>
 
@@ -267,20 +265,20 @@
 
     
  
-<meta property="og:title" content="this is starting to not suck" />
-<meta property="og:description" content="Collection of awk examples." />
+<meta property="og:title" content="Oracle DB Security Assessment Tool" />
+<meta property="og:description" content="" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://c-a-j.github.io/notes/foo-barski/" />
+<meta property="og:url" content="https://c-a-j.github.io/notes/dbsat/" />
 
     
     
 
 
     
-        <meta property="article:published_time" content="2018-05-02T00:00:00&#43;00:00"/>
+        <meta property="article:published_time" content="2023-04-03T00:00:00&#43;00:00"/>
     
     
-        <meta property="article:modified_time" content="2019-09-06T12:32:13-04:00"/>
+        <meta property="article:modified_time" content="2023-04-03T00:00:00&#43;00:00"/>
     
 
 
@@ -297,8 +295,8 @@
 
 
      <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="this is starting to not suck"/>
-<meta name="twitter:description" content="Collection of awk examples." />
+<meta name="twitter:title" content="Oracle DB Security Assessment Tool"/>
+<meta name="twitter:description" content="" />
 
 
     
@@ -401,13 +399,13 @@
                             
                             
                             
-                            <li class="__unix__"
+                            <li class="__notes__"
                                 
                                 
-                                title="See all 2 posts categorized in ‘unix’"
+                                title="This is the only post categorized in ‘notes’"
                                 
                             >
-                                <a class="p-category" href="https://c-a-j.github.io/categories/unix/">unix</a>
+                                <a class="p-category" href="https://c-a-j.github.io/categories/notes/">notes</a>
                             </li>
                         
                     
@@ -426,13 +424,32 @@
                             
                             
                             
-                            <li class="__ramblings__"
+                            <li class="__oracle__"
                                 
                                 
-                                title="This is the only post tagged with ‘ramblings’"
+                                title="This is the only post tagged with ‘oracle’"
                                 
                             >
-                                <a class="p-category" href="https://c-a-j.github.io/tags/ramblings/">ramblings</a>
+                                <a class="p-category" href="https://c-a-j.github.io/tags/oracle/">oracle</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__stig__"
+                                
+                                
+                                title="This is the only post tagged with ‘STIG’"
+                                
+                            >
+                                <a class="p-category" href="https://c-a-j.github.io/tags/stig/">STIG</a>
                             </li>
                         
                     
@@ -443,10 +460,10 @@
 
 </div>
 
-        <h1 class="post-title p-name">this is starting to not suck</h1>
+        <h1 class="post-title p-name">Oracle DB Security Assessment Tool</h1>
 
         
-        <data class="u-url" value="https://c-a-j.github.io/notes/foo-barski/"></data>
+        <data class="u-url" value="https://c-a-j.github.io/notes/dbsat/"></data>
 
         <div class="date-syndication">
             
@@ -456,11 +473,8 @@
     
     <div class="post-date">
         
-        <time datetime="2018-05-02T00:00:00+0000" class="dt-published" title="Published date">Wed May 2, 2018</time>
+        <time datetime="2023-04-03T00:00:00+0000" class="dt-published" title="Published date">Mon Apr 3, 2023</time>
         
-        
-            
-            <span class="dt-updated" title="Last modified date">[Fri Sep 6, 2019]</span>
         
     </div>
 
@@ -499,7 +513,7 @@
             
             
         
-        <p>Collection of <code>awk</code> examples.</p>
+        <p></p>
     </div>
 
 
@@ -523,21 +537,530 @@
 
 
 
-<h1 id="h1">h1&nbsp;<a class="headline-hash no-text-decoration" href="#h1">#</a></h1>
+<h2 id="download-archive">Download archive&nbsp;<a class="headline-hash no-text-decoration" href="#download-archive">#</a></h2>
+
+
+<p><a href="https://www.oracle.com/database/technologies/security/dbsat.html#:~:text=Oracle%20Database%20Security%20Assessment%20Tool%20(DBSAT)%20is%20a%20popular%20command,controls%20to%20mitigate%20those%20risks.">Download</a>
+from Oracle.</p>
+<blockquote>
+<p>Note: My Oracle Support account is required.</p>
+</blockquote>
+
+<h2 id="upload-archive-to-target-domain">Upload archive to target domain&nbsp;<a class="headline-hash no-text-decoration" href="#upload-archive-to-target-domain">#</a></h2>
+
+
+<p>Upload the archive via WinSCP or other method.</p>
+
+<h2 id="stage-archive-and-extract-contents">Stage archive and extract contents&nbsp;<a class="headline-hash no-text-decoration" href="#stage-archive-and-extract-contents">#</a></h2>
+
+
+<p>Move or copy the archive to <code>/tmp</code>
+
+<html lang="en">
+<div class="highlight"> 
+    <div class="code-toolbar">
+        <pre 
+            tabindex="0" 
+            style="
+                display:block;
+                color:#f8f8f2;
+                background-color:#272822;
+                -moz-tab-size:4;
+                -o-tab-size:4;tab-size:4;
+                "
+            class="command-line"
+            lang="en"
+            data-prompt="p-acct $"
+            data-output=""
+            data-filter-output="(out)"
+            data-continuation-str=""
+            data-continuation-prompt="&gt;"
+            >
+
+            <code class="language-shell">
+                    
+mv dbsat.zip /tmp
+
+            </code>
+        </pre>
+    </div>
+</div>
+</html>
+</p>
+<p>Log in as <code>root</code> and change ownership of the archive
+
+<html lang="en">
+<div class="highlight"> 
+    <div class="code-toolbar">
+        <pre 
+            tabindex="0" 
+            style="
+                display:block;
+                color:#f8f8f2;
+                background-color:#272822;
+                -moz-tab-size:4;
+                -o-tab-size:4;tab-size:4;
+                "
+            class="command-line"
+            lang="en"
+            data-prompt="p-acct $"
+            data-output=""
+            data-filter-output="(out)"
+            data-continuation-str=""
+            data-continuation-prompt="&gt;"
+            >
+
+            <code class="language-shell">
+                    
+sudo -iu root
+
+            </code>
+        </pre>
+    </div>
+</div>
+</html>
+</p>
+
+<html lang="en">
+<div class="highlight"> 
+    <div class="code-toolbar">
+        <pre 
+            tabindex="0" 
+            style="
+                display:block;
+                color:#f8f8f2;
+                background-color:#272822;
+                -moz-tab-size:4;
+                -o-tab-size:4;tab-size:4;
+                "
+            class="command-line"
+            lang="en"
+            data-prompt="root $"
+            data-output=""
+            data-filter-output="(out)"
+            data-continuation-str=""
+            data-continuation-prompt="&gt;"
+            >
+
+            <code class="language-shell">
+                    
+cd /tmp
+chown oracle:oinstall dbsat.zip
+
+            </code>
+        </pre>
+    </div>
+</div>
+</html>
+
+<p>Log in as <code>oracle</code> and verify environment
+
+<html lang="en">
+<div class="highlight"> 
+    <div class="code-toolbar">
+        <pre 
+            tabindex="0" 
+            style="
+                display:block;
+                color:#f8f8f2;
+                background-color:#272822;
+                -moz-tab-size:4;
+                -o-tab-size:4;tab-size:4;
+                "
+            class="command-line"
+            lang="en"
+            data-prompt="root $"
+            data-output=""
+            data-filter-output="(out)"
+            data-continuation-str=""
+            data-continuation-prompt="&gt;"
+            >
+
+            <code class="language-shell">
+                    
+exit
+
+            </code>
+        </pre>
+    </div>
+</div>
+</html>
+</p>
+
+<html lang="en">
+<div class="highlight"> 
+    <div class="code-toolbar">
+        <pre 
+            tabindex="0" 
+            style="
+                display:block;
+                color:#f8f8f2;
+                background-color:#272822;
+                -moz-tab-size:4;
+                -o-tab-size:4;tab-size:4;
+                "
+            class="command-line"
+            lang="en"
+            data-prompt="p-acct $"
+            data-output="3-20"
+            data-filter-output="(out)"
+            data-continuation-str=""
+            data-continuation-prompt="&gt;"
+            >
+
+            <code class="language-shell">
+                    
+sudo -iu oracle
+
+            </code>
+        </pre>
+    </div>
+</div>
+</html>
+
+
+<html lang="en">
+<div class="highlight"> 
+    <div class="code-toolbar">
+        <pre 
+            tabindex="0" 
+            style="
+                display:block;
+                color:#f8f8f2;
+                background-color:#272822;
+                -moz-tab-size:4;
+                -o-tab-size:4;tab-size:4;
+                "
+            class="command-line"
+            lang="en"
+            data-prompt="oracle $"
+            data-output="2-20"
+            data-filter-output="(out)"
+            data-continuation-str=""
+            data-continuation-prompt="&gt;"
+            >
+
+            <code class="language-shell">
+                    
+env | grep ORA
+ORACLE_UNQNAME=orcl
+ORA_NLS10=/opt/oracle/product/19/db_1/nls/data
+ORACLE_SID=edba02t
+ORACLE_BASE=/opt/oracle
+ORACLE_TERM=xterm
+ORACLE_HOME=/opt/oracle/product/19/db_1
+
+            </code>
+        </pre>
+    </div>
+</div>
+</html>
+
+<p>Create a <code>dbsat</code> directory
+
+<html lang="en">
+<div class="highlight"> 
+    <div class="code-toolbar">
+        <pre 
+            tabindex="0" 
+            style="
+                display:block;
+                color:#f8f8f2;
+                background-color:#272822;
+                -moz-tab-size:4;
+                -o-tab-size:4;tab-size:4;
+                "
+            class="command-line"
+            lang="en"
+            data-prompt="oracle $"
+            data-output=""
+            data-filter-output="(out)"
+            data-continuation-str=""
+            data-continuation-prompt="&gt;"
+            >
+
+            <code class="language-shell">
+                    
+mkdir /tmp/dbsat
+
+            </code>
+        </pre>
+    </div>
+</div>
+</html>
+</p>
+<p>Extract the archive contents
+
+<html lang="en">
+<div class="highlight"> 
+    <div class="code-toolbar">
+        <pre 
+            tabindex="0" 
+            style="
+                display:block;
+                color:#f8f8f2;
+                background-color:#272822;
+                -moz-tab-size:4;
+                -o-tab-size:4;tab-size:4;
+                "
+            class="command-line"
+            lang="en"
+            data-prompt="oracle $"
+            data-output=""
+            data-filter-output="(out)"
+            data-continuation-str=""
+            data-continuation-prompt="&gt;"
+            >
+
+            <code class="language-shell">
+                    
+unzip /tmp/dbsat.zip -d /tmp/dbsat
+
+            </code>
+        </pre>
+    </div>
+</div>
+</html>
+</p>
+
+<h2 id="unlock-the-system-user">Unlock the <code>system</code> user&nbsp;<a class="headline-hash no-text-decoration" href="#unlock-the-system-user">#</a></h2>
 
 
 
-<h2 id="h2">h2&nbsp;<a class="headline-hash no-text-decoration" href="#h2">#</a></h2>
+<html lang="en">
+<div class="highlight"> 
+    <div class="code-toolbar">
+        <pre 
+            tabindex="0" 
+            style="
+                display:block;
+                color:#f8f8f2;
+                background-color:#272822;
+                -moz-tab-size:4;
+                -o-tab-size:4;tab-size:4;
+                "
+            class="command-line"
+            lang="en"
+            data-prompt="oracle $"
+            data-output=""
+            data-filter-output="(out)"
+            data-continuation-str=""
+            data-continuation-prompt="&gt;"
+            >
+
+            <code class="language-shell">
+                    
+sqlplus / as sysdba
+
+            </code>
+        </pre>
+    </div>
+</div>
+</html>
+
+<blockquote>
+<p>Note: An alias for this may exist. Check for it with <code>alias</code>.</p>
+</blockquote>
+
+<html lang="en">
+<div class="highlight"> 
+    <div class="code-toolbar">
+        <pre 
+            tabindex="0" 
+            style="
+                display:block;
+                color:#f8f8f2;
+                background-color:#272822;
+                -moz-tab-size:4;
+                -o-tab-size:4;tab-size:4;
+                "
+            class="command-line"
+            lang="en"
+            data-prompt="SQL&gt;"
+            data-output=""
+            data-filter-output="(out)"
+            data-continuation-str=""
+            data-continuation-prompt="&gt;"
+            >
+
+            <code class="language-sql">
+                    
+alter user system identified by "PASSWORD";
+alter user system account unlock;
+exit
+
+            </code>
+        </pre>
+    </div>
+</div>
+</html>
+
+<blockquote>
+<p>Note: <code>&quot;PASSWORD&quot;</code> needs to be replaced by a password of sufficient
+complexity. For example, the password used for this test was 22 characters
+long and included two capital letters, ten lowercase, eight numbers, and two
+special characters. Be sure to take note of the password used, it will be
+needed later.</p>
+</blockquote>
+
+<h2 id="collect-report-data">Collect report data&nbsp;<a class="headline-hash no-text-decoration" href="#collect-report-data">#</a></h2>
 
 
 
-<h3 id="h3">h3&nbsp;<a class="headline-hash no-text-decoration" href="#h3">#</a></h3>
+<html lang="en">
+<div class="highlight"> 
+    <div class="code-toolbar">
+        <pre 
+            tabindex="0" 
+            style="
+                display:block;
+                color:#f8f8f2;
+                background-color:#272822;
+                -moz-tab-size:4;
+                -o-tab-size:4;tab-size:4;
+                "
+            class="command-line"
+            lang="en"
+            data-prompt="oracle $"
+            data-output=""
+            data-filter-output="(out)"
+            data-continuation-str=""
+            data-continuation-prompt="&gt;"
+            >
+
+            <code class="language-shell">
+                    
+mkdir /tmp/dbsat/reports
+cd /tmp/dbsat/reports
+bash /tmp/dbsat/dbsat collect -n system@${ORACLE_SID} "${ORACLE_SID}_$(date +%Y-%m-%d)"
+
+            </code>
+        </pre>
+    </div>
+</div>
+</html>
+
+
+<h2 id="generate-readable-report">Generate readable report&nbsp;<a class="headline-hash no-text-decoration" href="#generate-readable-report">#</a></h2>
 
 
 
-<h4 id="h4">h4&nbsp;<a class="headline-hash no-text-decoration" href="#h4">#</a></h4>
+<html lang="en">
+<div class="highlight"> 
+    <div class="code-toolbar">
+        <pre 
+            tabindex="0" 
+            style="
+                display:block;
+                color:#f8f8f2;
+                background-color:#272822;
+                -moz-tab-size:4;
+                -o-tab-size:4;tab-size:4;
+                "
+            class="command-line"
+            lang="en"
+            data-prompt="oracle $"
+            data-output=""
+            data-filter-output="(out)"
+            data-continuation-str=""
+            data-continuation-prompt="&gt;"
+            >
+
+            <code class="language-shell">
+                    
+bash /tmp/dbsat/dbsat report -n -a "${ORACLE_SID}_$(date +%Y-%m-%d)"
+
+            </code>
+        </pre>
+    </div>
+</div>
+</html>
+
+<blockquote>
+<p>Note: The above command will only work if you are generating the <code>.html</code>
+report on the same day that the data was collected. Otherwise you will need to
+manually replace <code>${ORACLE_SID}_$(date +%Y-%m-%d)</code> with the filename.</p>
+</blockquote>
+
+<h2 id="copy-report-to-p-account-home">Copy report to p-account home&nbsp;<a class="headline-hash no-text-decoration" href="#copy-report-to-p-account-home">#</a></h2>
 
 
+<p>Change permissions of the <code>.html</code> report file
+
+<html lang="en">
+<div class="highlight"> 
+    <div class="code-toolbar">
+        <pre 
+            tabindex="0" 
+            style="
+                display:block;
+                color:#f8f8f2;
+                background-color:#272822;
+                -moz-tab-size:4;
+                -o-tab-size:4;tab-size:4;
+                "
+            class="command-line"
+            lang="en"
+            data-prompt="oracle $"
+            data-output=""
+            data-filter-output="(out)"
+            data-continuation-str=""
+            data-continuation-prompt="&gt;"
+            >
+
+            <code class="language-shell">
+                    
+chmod 777 "${ORACLE_SID}_$(date +%Y-%m-%d)_report.html"
+exit
+
+            </code>
+        </pre>
+    </div>
+</div>
+</html>
+</p>
+
+<html lang="en">
+<div class="highlight"> 
+    <div class="code-toolbar">
+        <pre 
+            tabindex="0" 
+            style="
+                display:block;
+                color:#f8f8f2;
+                background-color:#272822;
+                -moz-tab-size:4;
+                -o-tab-size:4;tab-size:4;
+                "
+            class="command-line"
+            lang="en"
+            data-prompt="p-acct $"
+            data-output=""
+            data-filter-output="(out)"
+            data-continuation-str=""
+            data-continuation-prompt="&gt;"
+            >
+
+            <code class="language-shell">
+                    
+cp /tmp/dbsat/reports/REPORT_NAME ~/wherever/you/want/
+
+            </code>
+        </pre>
+    </div>
+</div>
+</html>
+
+<blockquote>
+<p>Note: Replace <code>REPORT_NAME</code> with the <code>.html</code> report filename and
+<code>~/wherever/you/want/</code> to the desired path within your home directory.</p>
+</blockquote>
+
+<h2 id="automation-idea">Automation idea&nbsp;<a class="headline-hash no-text-decoration" href="#automation-idea">#</a></h2>
+
+
+<p>We may be able to script this process and run it on an OEM console to get
+reports for every database all at once.</p>
 
 
         </div>
@@ -574,11 +1097,14 @@
         <div class="hugotoc no-text-decoration">
             <nav id="TableOfContents">
   <ul>
-    <li><a href="#h2">h2</a>
-      <ul>
-        <li><a href="#h3">h3</a></li>
-      </ul>
-    </li>
+    <li><a href="#download-archive">Download archive</a></li>
+    <li><a href="#upload-archive-to-target-domain">Upload archive to target domain</a></li>
+    <li><a href="#stage-archive-and-extract-contents">Stage archive and extract contents</a></li>
+    <li><a href="#unlock-the-system-user">Unlock the <code>system</code> user</a></li>
+    <li><a href="#collect-report-data">Collect report data</a></li>
+    <li><a href="#generate-readable-report">Generate readable report</a></li>
+    <li><a href="#copy-report-to-p-account-home">Copy report to p-account home</a></li>
+    <li><a href="#automation-idea">Automation idea</a></li>
   </ul>
 </nav>
             <a href="#" class="back-to-top">Back to top</a>
@@ -660,13 +1186,13 @@
                             
                             
                             
-                            <li class="__unix__"
+                            <li class="__notes__"
                                 
                                 
-                                title="See all 2 posts categorized in ‘unix’"
+                                title="This is the only post categorized in ‘notes’"
                                 
                             >
-                                <a class="p-category" href="https://c-a-j.github.io/categories/unix/">unix</a>
+                                <a class="p-category" href="https://c-a-j.github.io/categories/notes/">notes</a>
                             </li>
                         
                     
@@ -685,13 +1211,32 @@
                             
                             
                             
-                            <li class="__ramblings__"
+                            <li class="__oracle__"
                                 
                                 
-                                title="This is the only post tagged with ‘ramblings’"
+                                title="This is the only post tagged with ‘oracle’"
                                 
                             >
-                                <a class="p-category" href="https://c-a-j.github.io/tags/ramblings/">ramblings</a>
+                                <a class="p-category" href="https://c-a-j.github.io/tags/oracle/">oracle</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__stig__"
+                                
+                                
+                                title="This is the only post tagged with ‘STIG’"
+                                
+                            >
+                                <a class="p-category" href="https://c-a-j.github.io/tags/stig/">STIG</a>
                             </li>
                         
                     
@@ -707,10 +1252,10 @@
 
 <div class="prev-next-navigator clear-float">
     
-        <span class="prev-post left no-text-decoration">
-            <a href="https://c-a-j.github.io/posts/foo-barski/">«&nbsp;An ode to Arch-Linux</a>
-        </span>
     
+        <span class="next-post right no-text-decoration">
+            <a href="https://c-a-j.github.io/posts/foo-barski/">An ode to Arch-Linux&nbsp;»</a>
+        </span>
     
 </div>
  

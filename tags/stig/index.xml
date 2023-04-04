@@ -2,18 +2,18 @@
     <channel>
         <title>
             
-                    Notes on
+                    STIG on
                 
             
             Clint A Jordan</title>
-        <link>https://c-a-j.github.io/notes/</link>
-        <description>Recent content  in Notes
+        <link>https://c-a-j.github.io/tags/stig/</link>
+        <description>Recent content  in STIG
             on Clint A Jordan</description>
         
         <lastBuildDate>Tue, 04 Apr 2023 17:09:07 -0600</lastBuildDate>
         <generator>Hugo -- gohugo.io</generator>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
-            <atom:link href="https://c-a-j.github.io/notes/index.xml" rel="self" type="application/rss&#43;xml" />
+            <atom:link href="https://c-a-j.github.io/tags/stig/index.xml" rel="self" type="application/rss&#43;xml" />
         
             
             <item>
@@ -576,58 +576,6 @@ reports for every database all at once.&lt;/p&gt;
                 
                 <guid>https://c-a-j.github.io/notes/dbsat/</guid>
                 <pubDate>Mon, 03 Apr 2023 00:00:00 +0000</pubDate>
-            </item>
-        
-            
-            <item>
-                <title>this is starting to not suck</title>
-                <link>https://c-a-j.github.io/notes/foo-barski/</link>
-                
-                
-                <description>&lt;blockquote&gt;Collection of &lt;code&gt;awk&lt;/code&gt; examples.&lt;/blockquote&gt;
-&lt;h1 id=&#34;h1&#34;&gt;h1&amp;nbsp;&lt;a class=&#34;headline-hash no-text-decoration&#34; href=&#34;#h1&#34;&gt;#&lt;/a&gt;&lt;/h1&gt;
-
-
-
-&lt;h2 id=&#34;h2&#34;&gt;h2&amp;nbsp;&lt;a class=&#34;headline-hash no-text-decoration&#34; href=&#34;#h2&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;
-
-
-
-&lt;h3 id=&#34;h3&#34;&gt;h3&amp;nbsp;&lt;a class=&#34;headline-hash no-text-decoration&#34; href=&#34;#h3&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;
-
-
-
-&lt;h4 id=&#34;h4&#34;&gt;h4&amp;nbsp;&lt;a class=&#34;headline-hash no-text-decoration&#34; href=&#34;#h4&#34;&gt;#&lt;/a&gt;&lt;/h4&gt;
-
-
-</description>
-                
-                        <author>Clint.Jordan@fakeEmailToMakeValidatorHappy.com (Clint Jordan)</author>
-                
-                     
-                        
-                             
-                            
-                                
-                                 
-                                    <category domain="https://c-a-j.github.io/categories/unix">unix</category>
-                                
-                            
-                        
-                     
-                        
-                             
-                            
-                                
-                                 
-                                    <category domain="https://c-a-j.github.io/tags/ramblings">ramblings</category>
-                                
-                            
-                        
-                    
-                
-                <guid>https://c-a-j.github.io/notes/foo-barski/</guid>
-                <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
             </item>
         
     </channel>
